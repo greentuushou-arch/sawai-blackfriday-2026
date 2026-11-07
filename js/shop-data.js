@@ -23,14 +23,14 @@ window.BF_SHOP = {
   mainLive: false,
 
   /* どの部品をどの順で並べるか。入れ替え・削除が可能 */
-  sections: ['schedule', 'feature', 'bargain', 'coupon', 'category', 'teaser', 'deal'],
+  sections: ['schedule', 'feature', 'coupon', 'bargain', 'category', 'teaser', 'deal'],
 
   ticker: ['ブラックフライデー先行セール', '2027年 新春福袋を数量限定で先行販売', '福袋 2,027円から', '1,000円ポッキリ', 'まとめて買うほどクーポン'],
 
   nav: [
     { id: 'feature', label: 'フライング福袋', short: '福袋', sp: true },
-    { id: 'bargain', label: '1,000円ポッキリ', short: 'お買い得', sp: true },
     { id: 'coupon', label: 'まとめ買いクーポン', short: 'クーポン', sp: true },
+    { id: 'bargain', label: '1,000円ポッキリ', short: 'お買い得', sp: true },
     { id: 'category', label: '売り場から探す', short: '売り場', sp: true },
     { id: 'teaser', label: '本番はシークレット', short: '本番' },
     { id: 'deal', label: '22日の特別企画', short: '22日' }
@@ -70,7 +70,8 @@ window.BF_SHOP = {
     newYear: { year: '2027', title: '新春福袋', seal: ['数量', '限定'], ship: '12月中旬発送' },
     title: ['元旦福袋が', 'フライング購入できる', 'チャンス！'],
     period: { label: '先行セール 第1弾', from: ['11/13', '(金)', '0:00'], to: ['11/18', '(水)', '23:59'], note: '6日間限定販売！' },
-    lead: '元旦の初売りのために用意した2027年の福袋を、数量限定でひと足先にお届けします。なくなり次第終了です。',
+    lead: '元旦の初売りのために用意した2027年の福袋を、数量限定でひと足先にお届けします。',
+    soldout: 'なくなり次第終了',
     bandPrice: 2027,
     bandLead: '2027年のはじまりを',
     bandTail: '円で',
@@ -113,7 +114,7 @@ window.BF_SHOP = {
     /* どーんと見せる写真。差し替えは images/deal-hero.jpg を置き換えるだけ */
     hero: 'images/deal-hero.jpg',
     /* 先行中は商品名も価格も伏せて匂わせる。本番版では null */
-    secret: { lines: ['あの商品が！！！', '初のポイント20倍に！？'], hint: 'レビュー5万件突破記念', soon: 'お楽しみに！！' },
+    secret: { lines: ['あの商品が！！！', '初の楽天DEAL20倍に！？'], hint: 'レビュー5万件突破記念', soon: 'お楽しみに！！' },
     item: {
       name: '1番選ばれるコーヒーセット', spec: 'グルメ大賞9度受賞', img: 'images/p-acsale1960.webp', price: 2788, from: true, ship: '送料無料',
       points: ['80杯分〜300杯分から選べます', 'フォルテシモとビクトリーの人気2種', '全サイズが特別企画の対象です'],

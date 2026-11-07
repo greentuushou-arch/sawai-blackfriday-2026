@@ -8,7 +8,7 @@
   var base = window.BF_SHOP;
 
   window.BF_SHOP = Object.assign({}, base, {
-    sections: ['teaser', 'deal', 'bargain', 'coupon', 'category'],
+    sections: ['teaser', 'deal', 'coupon', 'bargain', 'category'],
 
     ticker: ['BLACK FRIDAY 本番', '30種のBLACK FRIDAY福袋', '11/22は楽天スーパーDEAL 20倍', '1,000円ポッキリ', 'まとめ買いクーポン'],
 
@@ -16,8 +16,8 @@
     nav: [
       { id: 'teaser', label: 'BLACK FRIDAY福袋', short: '福袋', sp: true },
       { id: 'deal', label: '楽天スーパーDEAL 20倍', short: '20倍', sp: true },
-      { id: 'bargain', label: '1,000円ポッキリ', short: 'お買い得', sp: true },
       { id: 'coupon', label: 'まとめ買いクーポン', short: 'クーポン' },
+      { id: 'bargain', label: '1,000円ポッキリ', short: 'お買い得', sp: true },
       { id: 'category', label: '売り場から探す', short: '売り場', sp: true }
     ],
 

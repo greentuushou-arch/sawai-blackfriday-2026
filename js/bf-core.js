@@ -126,7 +126,8 @@
       ? '<header class="ny-head rv"><div><p class="kicker">' + esc(F.kicker) + '</p><p class="ny-year">' + esc(ny.year) + '</p><h2 class="ny-title">' + esc(ny.title) + '</h2></div>' +
         '<p class="ny-seal">' + lines(ny.seal) + '</p>' + '<p class="ny-catch">' + lines(F.title) + '</p>' +
         '<div class="ny-period">' + periodHtml(F.period) + '</div>' +
-        (ny.ship ? '<p class="ny-ship">' + esc(ny.ship) + '</p>' : '') + '<p class="lead">' + esc(F.lead) + '</p></header>'
+        (ny.ship ? '<p class="ny-ship">' + esc(ny.ship) + '</p>' : '') + '<p class="lead">' + esc(F.lead) + '</p>' +
+        (F.soldout ? '<p class="ny-soldout">' + esc(F.soldout) + '</p>' : '') + '</header>'
       : secHead(F.kicker, F.title, F.lead);
     var zone = ny ? 'newyear' : 'black';
     return '<section class="feature ' + (ny ? 'z-newyear' : 'z-black') + '" id="feature" data-zone="' + zone + '" data-burst>' + head +
