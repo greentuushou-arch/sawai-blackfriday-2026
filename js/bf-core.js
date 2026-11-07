@@ -137,6 +137,16 @@
 
   PARTS.deal = function () {
     var d = D.deal;
+    if (d.secret) {
+      return '<section class="deal z-black is-secret" id="deal" data-zone="black"><i class="rays" aria-hidden="true"></i>' +
+        (d.notice ? '<p class="deal-notice rv">' + esc(d.notice) + '</p>' : '') +
+        '<p class="deal-date rv"><span>' + esc(d.date.pre) + '</span><b>' + esc(d.date.day) + '</b><span>' + esc(d.date.tail) + '</span></p>' +
+        '<p class="deal-limit rv">' + esc(d.limit) + '</p>' +
+        '<p class="deal-tease rv">' + lines(d.secret.lines) + '</p>' +
+        '<div class="deal-hero secret-photo rv"><img src="' + esc(d.hero) + '" alt="" loading="lazy"><b>?</b></div>' +
+        (d.secret.hint ? '<p class="deal-hint rv">' + esc(d.secret.hint) + '</p>' : '') +
+        '<p class="soon rv">' + esc(d.secret.soon) + '</p></section>';
+    }
     return '<section class="deal z-black" id="deal" data-zone="black" data-burst><i class="rays" aria-hidden="true"></i>' +
       (d.notice ? '<p class="deal-notice rv">' + esc(d.notice) + '</p>' : '') +
       '<p class="deal-date rv"><span>' + esc(d.date.pre) + '</span><b>' + esc(d.date.day) + '</b><span>' + esc(d.date.tail) + '</span></p>' +
@@ -203,6 +213,14 @@
     var bags = '';
     for (var i = 0; i < t.count; i++) bags += '<i style="--i:' + i + '">' + BAG_SVG + '</i>';
     var period = periodHtml(t.period);
+    if (t.secret) {
+      /* 先行中は本番の中身を伏せて匂わせる。袋の数で種類数が分からないよう secret.count 個だけ並べる */
+      bags = '';
+      for (var j = 0; j < (t.secret.count || 12); j++) bags += '<i style="--i:' + j + '">' + BAG_SVG + '</i>';
+      return '<section class="teaser z-black is-secret" id="teaser" data-zone="black"><p class="kicker rv">' + esc(t.kicker) + '</p>' + period +
+        '<h2 class="secret-title rv">' + lines(t.secret.title) + '</h2>' +
+        '<div class="bags" data-bags>' + bags + '</div><p class="soon rv">' + esc(t.secret.soon) + '</p></section>';
+    }
     return '<section class="teaser z-black" id="teaser" data-zone="black"><p class="kicker rv">' + esc(t.kicker) + '</p>' + period +
       '<p class="teaser-num rv"><span>' + esc(t.numberLead) + '</span><b>' + esc(t.numberText) + '</b><span>' + esc(t.unit) + 'の</span></p><h2 class="rv">' + esc(t.title) + '</h2>' +
       '<div class="bags" data-bags>' + bags + '</div><p class="lead rv">' + esc(t.body) + '</p></section>';

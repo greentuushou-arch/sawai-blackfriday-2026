@@ -12,6 +12,7 @@
 
     ticker: ['BLACK FRIDAY 本番', '30種のBLACK FRIDAY福袋', '11/22は楽天スーパーDEAL 20倍', '1,000円ポッキリ', 'まとめ買いクーポン'],
 
+    schedule: base.schedule,
     nav: [
       { id: 'teaser', label: 'BLACK FRIDAY福袋', short: '福袋', sp: true },
       { id: 'deal', label: '楽天スーパーDEAL 20倍', short: '20倍', sp: true },
@@ -21,7 +22,6 @@
     ],
 
     fv: Object.assign({}, base.fv, {
-      style: 'neon',
       signBand: null,
       catch: ['年に一度の', 'お祭り本番'],
       ship: ['11/19(木) 20:00〜', '11/25(水) 01:59'],
@@ -40,9 +40,9 @@
       ended: 'ブラックフライデーは終了しました'
     },
 
-    teaser: Object.assign({}, base.teaser, { kicker: 'BLACK FRIDAY 本番', period: null }), /* 期間はFVに出すので重ねない */
+    teaser: Object.assign({}, base.teaser, { kicker: 'BLACK FRIDAY 本番', period: null, secret: null }), /* 期間はFVに出すので重ねない */
 
-    deal: Object.assign({}, base.deal, { notice: '本番の特別企画' }),
+    deal: Object.assign({}, base.deal, { notice: '本番の特別企画', secret: null }),
 
     coupon: Object.assign({}, base.coupon, { title: ['BLACK FRIDAY', '本番期間の', 'オトクなクーポン'] }),
 

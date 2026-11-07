@@ -32,8 +32,8 @@ window.BF_SHOP = {
     { id: 'bargain', label: '1,000円ポッキリ', short: 'お買い得', sp: true },
     { id: 'coupon', label: 'まとめ買いクーポン', short: 'クーポン', sp: true },
     { id: 'category', label: '売り場から探す', short: '売り場', sp: true },
-    { id: 'teaser', label: 'BLACK FRIDAY福袋', short: '本番' },
-    { id: 'deal', label: '楽天スーパーDEAL 20倍', short: '20倍' }
+    { id: 'teaser', label: '本番はシークレット', short: '本番' },
+    { id: 'deal', label: '22日の特別企画', short: '22日' }
   ],
 
   fv: {
@@ -60,7 +60,7 @@ window.BF_SHOP = {
     title: ['お祭りは', '2回来ます'],
     items: [
       { no: '第1弾', when: '11/13(金) 0:00〜11/18(水) 23:59', head: 'ブラックフライデー 先行セール', body: ['2027年 新春福袋', '6日間限定販売'], startISO: '2026-11-13T00:00:00+09:00', href: '#feature' },
-      { no: '第2弾', when: '11/19(木) 20:00〜11/25(水) 01:59', head: 'ブラックフライデー本番', body: ['BLACK FRIDAY福袋 30種', '22日だけのポイント20倍企画'], href: '#teaser', manual: 'main' }
+      { no: '第2弾', when: '11/19(木) 20:00〜11/25(水) 01:59', head: 'ブラックフライデー本番', body: ['中身はまだシークレット', 'お楽しみに！！'], href: '#teaser', manual: 'main' }
     ]
   },
 
@@ -112,6 +112,8 @@ window.BF_SHOP = {
     reasons: ['レビュー5万件突破記念', 'ブラックフライデーの超目玉企画'],
     /* どーんと見せる写真。差し替えは images/deal-hero.jpg を置き換えるだけ */
     hero: 'images/deal-hero.jpg',
+    /* 先行中は商品名も価格も伏せて匂わせる。本番版では null */
+    secret: { lines: ['あの商品が！！！', '初のポイント20倍に！？'], hint: 'レビュー5万件突破記念', soon: 'お楽しみに！！' },
     item: {
       name: '1番選ばれるコーヒーセット', spec: 'グルメ大賞9度受賞', img: 'images/p-acsale1960.webp', price: 2788, from: true, ship: '送料無料',
       points: ['80杯分〜300杯分から選べます', 'フォルテシモとビクトリーの人気2種', '全サイズが特別企画の対象です'],
@@ -211,6 +213,8 @@ window.BF_SHOP = {
     unit: '種',
     title: 'BLACK FRIDAY 福袋',
     body: 'ラインナップは本番の開始とともに公開します。',
+    /* 先行中は伏せる。本番版(shop-data-honban.js)では null にして中身を出す */
+    secret: { title: ['どんな福袋が出るかは', 'まだシークレット'], count: 12, soon: 'お楽しみに！！' },
     /* 本番の福袋。mainLive:true のときに一覧表示する */
     bags: []
   },
