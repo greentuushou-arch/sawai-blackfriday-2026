@@ -110,7 +110,13 @@ window.BF_SHOP = {
     unit: '倍',
     head: '20％ポイント還元',
     reasons: ['レビュー5万件突破記念', 'ブラックフライデーの超目玉企画'],
-    item: { name: '1番選ばれるコーヒーセット', spec: 'グルメ大賞9度受賞', img: 'images/p-acsale1960.webp', price: 2788, from: true, url: 'https://item.rakuten.co.jp/sawaicoffee-tea/ac-sale-1960/' },
+    /* どーんと見せる写真。差し替えは images/deal-hero.jpg を置き換えるだけ */
+    hero: 'images/deal-hero.jpg',
+    item: {
+      name: '1番選ばれるコーヒーセット', spec: 'グルメ大賞9度受賞', img: 'images/p-acsale1960.webp', price: 2788, from: true, ship: '送料無料',
+      points: ['80杯分〜300杯分から選べます', 'フォルテシモとビクトリーの人気2種', '全サイズが特別企画の対象です'],
+      cta: 'この商品を見る', url: 'https://item.rakuten.co.jp/sawaicoffee-tea/ac-sale-1960/'
+    },
     linkLabel: '特別企画のページを見る',
     link: 'https://greentuushou-arch.github.io/sawai-review50k-2026/'
   },

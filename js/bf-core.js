@@ -75,13 +75,13 @@
     var cards = f.cards.map(function (src, i) {
       return '<img class="fan fan-' + i + '" src="' + esc(src) + '" alt="">';
     }).join('');
-    return '<section class="fv" id="top" data-zone="black">' +
+    return '<section class="fv' + (f.style ? ' fv--' + esc(f.style) : '') + '" id="top" data-zone="black">' +
       '<div class="sign" id="sign"><svg class="bulbs" aria-hidden="true"><rect class="b-off"/><rect class="b-on"/></svg>' +
       '<p class="sign-small">' + esc(f.signSmall) + '</p>' +
       '<p class="sign-main" aria-label="' + esc(f.signLines.join(' ')) + '">' + lines(f.signLines) + '</p>' +
       (f.signBand ? '<p class="sign-band">' + esc(f.signBand) + '</p>' : '') + '</div>' +
       '<h1 class="fv-catch">' + lines(f.catch) + '</h1>' +
-      (f.ship ? '<p class="fv-ship">' + esc(f.ship) + '</p>' : '') +
+      (f.ship ? '<p class="fv-ship">' + (Array.isArray(f.ship) ? lines(f.ship) : esc(f.ship)) + '</p>' : '') +
       '<div class="tag"><span class="tag-lead">' + esc(f.priceLead) + '</span>' +
       '<span class="tag-num" data-slot="' + yen(f.price) + '">' + yen(f.price) + '</span>' +
       '<span class="tag-tail">' + esc(f.priceTail) + '</span></div>' +
@@ -145,8 +145,14 @@
       '<p class="deal-big rv"><span class="deal-num">' + esc(d.number) + '</span><span class="deal-unit">' + esc(d.unit) + '</span></p>' +
       '<p class="deal-head rv">' + esc(d.head) + '</p>' +
       '<ul class="deal-why rv">' + d.reasons.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ul>' +
-      '<a class="deal-item rv" href="' + esc(d.item.url) + '"><img src="' + esc(d.item.img) + '" alt="' + esc(d.item.name) + '" loading="lazy">' +
-      '<span class="card-body"><span class="card-name">' + esc(d.item.name) + '</span><span class="card-spec">' + esc(d.item.spec) + '</span>' + priceHtml(d.item) + '</span></a>' +
+      (d.hero
+        ? '<a class="deal-hero rv" href="' + esc(d.item.url) + '"><img src="' + esc(d.hero) + '" alt="' + esc(d.item.name) + '" loading="lazy"></a>' +
+          '<div class="deal-detail rv"><p class="card-spec big">' + esc(d.item.spec) + '</p><h3>' + esc(d.item.name) + '</h3>' + priceHtml(d.item, 'price-l') +
+          (d.item.ship ? '<p class="ship">' + esc(d.item.ship) + '</p>' : '') +
+          (d.item.points ? '<ul class="deal-points">' + d.item.points.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' : '') +
+          '<a class="btn" href="' + esc(d.item.url) + '">' + esc(d.item.cta || '商品を見る') + '</a></div>'
+        : '<a class="deal-item rv" href="' + esc(d.item.url) + '"><img src="' + esc(d.item.img) + '" alt="' + esc(d.item.name) + '" loading="lazy">' +
+          '<span class="card-body"><span class="card-name">' + esc(d.item.name) + '</span><span class="card-spec">' + esc(d.item.spec) + '</span>' + priceHtml(d.item) + '</span></a>') +
       '<a class="btn btn-gold rv" href="' + esc(d.link) + '">' + esc(d.linkLabel) + '</a></section>';
   };
 
@@ -241,10 +247,13 @@
   /* ---------- カウントダウン ---------- */
   function tickCount() {
     var c = D.countdown;
-    var diff = new Date(c.startISO) - nowDate();
+    var now = nowDate();
+    var diff = new Date(c.startISO) - now;
     var nodes = document.querySelectorAll('[data-count]');
     var html;
-    if (diff <= 0) {
+    if (c.endISO && now >= new Date(c.endISO)) {
+      html = '<p class="count-live">' + esc(c.ended) + '</p>';
+    } else if (diff <= 0) {
       html = '<p class="count-live">' + esc(c.after) + '</p>';
     } else {
       var s = Math.floor(diff / 1000);

@@ -274,6 +274,14 @@ section { position: relative; padding: 15cqw 4.5cqw; }
 .deal-why li + li { border-top: 1px solid rgba(233,194,100,.45); }
 .deal-num { font: 700 min(50cqw, 260px)/.95 var(--font-num); letter-spacing: 0; }
 .deal-unit { font-size: clamp(60px, 20cqw, 108px); font-weight: 700; }
+.deal-hero { display: block; margin: 0 -4.5cqw; }
+.deal-hero img { width: 100%; }
+.deal-detail { margin-top: -1px; padding: 16px 16px 18px; background: var(--c-paper); color: var(--c-ink); text-align: left; }
+.deal-detail h3 { font-size: clamp(22px, 6.6cqw, 34px); font-weight: 700; line-height: 1.35; }
+.deal-detail .price-l { margin-top: 6px; }
+.deal-points { margin-top: 10px; border-top: 1px solid #ddd2c2; }
+.deal-points li { padding: 8px 0 8px 1.1em; border-bottom: 1px solid #ddd2c2; font-size: 16px; line-height: 1.5; position: relative; }
+.deal-points li::before { content: ''; position: absolute; left: 2px; top: 1.05em; width: 7px; height: 7px; background: var(--c-red); }
 .deal-item { display: grid; grid-template-columns: 42% 1fr; align-items: center; background: var(--c-paper); color: var(--c-ink); text-align: left; }
 .deal-item .price { margin-top: 6px; }
 
@@ -384,7 +392,7 @@ section { position: relative; padding: 15cqw 4.5cqw; }
   .hero-m h3 { font-size: 20px; }
   .tickets { max-width: 620px; margin-left: auto; margin-right: auto; }
   .chips { grid-template-columns: repeat(4, 1fr); }
-  .deal-item, .deal .btn, .period, .fv-ship, .tag, .ny-period, .deal-why { max-width: 620px; margin-left: auto; margin-right: auto; }
+  .deal-item, .deal .btn, .deal-detail, .period, .fv-ship, .tag, .ny-period, .deal-why { max-width: 620px; margin-left: auto; margin-right: auto; }
   .bags { grid-template-columns: repeat(10, 1fr); }
   .ny-ship { justify-self: center; width: 100%; max-width: 620px; }
 }
@@ -395,3 +403,25 @@ section { position: relative; padding: 15cqw 4.5cqw; }
   .rv, .fan, .sign-main { opacity: 1 !important; transform: none; }
   .fan { transform: translate(var(--x), var(--y)) rotate(var(--r)); }
 }
+
+/* ---------- FV: ネオン管版 (fv.style: 'neon') ---------- */
+.fv--neon { background: radial-gradient(80% 50% at 50% 26%, rgba(var(--c-spot), .22), transparent 70%), var(--c-bg); }
+.fv--neon .bulbs { display: none; }
+.fv--neon .sign {
+  background: rgba(0, 0, 0, .55); border: 3px solid var(--c-gold-light); border-radius: 26px;
+  box-shadow: 0 0 3px #fff, 0 0 14px var(--c-gold), 0 0 34px rgba(var(--c-spot), .7), inset 0 0 16px rgba(var(--c-spot), .6);
+}
+.fv--neon .sign-small { color: var(--c-neon-2); }
+.fv--neon .sign-main {
+  background: none; -webkit-background-clip: border-box; background-clip: border-box; color: #fff; font-weight: 500;
+  text-shadow: 0 0 2px #fff, 0 0 10px var(--c-gold), 0 0 24px var(--c-gold), 0 0 48px var(--c-gold-deep);
+}
+.fv--neon .sign-main .ln:last-child { text-shadow: 0 0 2px #fff, 0 0 10px var(--c-neon-2), 0 0 24px var(--c-neon-2), 0 0 48px #0096b4; }
+body.lit .fv--neon .sign-main { animation: power .8s steps(1) forwards, buzz 7s 1.4s infinite; }
+@keyframes buzz { 0%, 41%, 43%, 45%, 100% { opacity: 1; } 42%, 44% { opacity: .35; } }
+.fv--neon .fv-catch .ln:last-child { color: #fff; }
+.fv--neon .fv-ship { border-color: var(--c-neon-2); color: var(--c-neon-2); font: 700 clamp(22px, 6.6cqw, 40px)/1.3 var(--font-num); letter-spacing: .02em; }
+.fv--neon .box-front { border-color: var(--c-gold); box-shadow: 0 0 12px rgba(var(--c-spot), .6); }
+.fv--neon .box-front span { color: #fff; font-size: clamp(20px, 6cqw, 34px); }
+.fv--neon .flap { border-color: var(--c-gold); }
+.fv--neon .count-num b { color: var(--c-neon-2); }

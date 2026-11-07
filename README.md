@@ -57,3 +57,10 @@
 - `coupon.isSample: false` にして、`tiers` にクーポンURLを入れる
 - `index.html` の noindex を外す
 - 確認用に日時を変えて見るときは `?now=2026-11-13T10:00` を付ける
+
+## 本番版(honban.html)
+
+先行セールが終わる前(11/17ごろ)に差し替える、本番の内容だけの版。
+`js/shop-data.js` を読んだあと `js/shop-data-honban.js` で上書きし、`css/theme-sawai-neon.css` で金をネオン管の赤とシアンに変える。
+FVは `fv.style: 'neon'` で電球の看板がネオン管の看板になる。新春福袋とスケジュールは外している。
+カウントダウンは本番開始まで、終了後は `countdown.ended` の文言に切り替わる。
