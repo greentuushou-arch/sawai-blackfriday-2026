@@ -157,8 +157,8 @@ section { position: relative; padding: 15cqw 4.5cqw; }
 .price .yen { font-size: 18px; font-weight: 700; margin-left: 2px; }
 .price .from { font-size: 18px; font-weight: 700; margin-left: 1px; }
 .price.is-long .num { font-size: clamp(28px, 9cqw, 48px); }
-.price-l .num { font-size: clamp(56px, 19cqw, 100px); }
-.price-l .yen { font-size: 26px; }
+.price-l .num { font-size: clamp(66px, 22cqw, 112px); }
+.price-l .yen { font-size: 28px; }
 .was { display: block; font-size: 16px; color: #6b5d4e; }
 .ship { display: block; font-size: 15px; font-weight: 700; color: var(--c-ink); }
 
@@ -390,6 +390,7 @@ section { position: relative; padding: 15cqw 4.5cqw; }
   .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .price .num { font-size: 32px; }
   .price.is-long .num { font-size: 27px; }
+  .price.price-l .num { font-size: 84px; }
   .hero-l { display: grid; grid-template-columns: 46% 1fr; align-items: center; }
   .hero-pair { max-width: 620px; margin: 0 auto; }
   .hero-m h3 { font-size: 20px; }
