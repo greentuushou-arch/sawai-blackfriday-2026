@@ -181,9 +181,11 @@
     var c = D.coupon;
     var tiers = c.tiers.map(function (t, i) {
       var ready = t.url && t.url !== '#';
-      return '<a class="ticket rv t-' + i + '" href="' + esc(t.url) + '"' + (ready ? '' : ' aria-disabled="true"') + '>' +
-        '<span class="ticket-min">' + esc(t.min) + 'で</span>' +
-        '<span class="ticket-off"><b>' + esc(t.off) + '</b><span>円<br>OFF</span></span>' +
+      var unit = t.unit || ['円', 'OFF'];
+      return '<a class="ticket rv t-' + i + (t.style ? ' is-' + esc(t.style) : '') + '" href="' + esc(t.url) + '"' + (ready ? '' : ' aria-disabled="true"') + '>' +
+        (t.tag ? '<span class="ticket-tag">' + esc(t.tag) + '</span>' : '') +
+        '<span class="ticket-min">' + esc(t.cond || (t.min + 'で')) + '</span>' +
+        '<span class="ticket-off"><b>' + esc(t.off) + '</b><span>' + esc(unit[0]) + '<br>' + esc(unit[1]) + '</span></span>' +
         '<span class="ticket-go">' + (ready ? '取得する' : '準備中') + '</span></a>';
     }).join('');
     return '<section class="coupon z-gold" id="coupon" data-zone="gold" data-burst>' + secHead(c.kicker, c.title) +

@@ -25,11 +25,11 @@ window.BF_SHOP = {
   /* どの部品をどの順で並べるか。入れ替え・削除が可能 */
   sections: ['schedule', 'feature', 'coupon', 'bargain', 'category', 'teaser', 'deal'],
 
-  ticker: ['ブラックフライデー先行セール', '2027年 新春福袋を数量限定で先行販売', '福袋 2,027円から', '1,000円ポッキリ', 'まとめて買うほどクーポン'],
+  ticker: ['ブラックフライデー先行セール', '2027年 新春福袋を数量限定で先行販売', '福袋 2,027円から', '1,000円ポッキリ', '50%OFFクーポン', '黒クーポン 96円OFF'],
 
   nav: [
     { id: 'feature', label: 'フライング福袋', short: '福袋', sp: true },
-    { id: 'coupon', label: 'まとめ買いクーポン', short: 'クーポン', sp: true },
+    { id: 'coupon', label: 'オトクなクーポン', short: 'クーポン', sp: true },
     { id: 'bargain', label: '1,000円ポッキリ', short: 'お買い得', sp: true },
     { id: 'category', label: '売り場から探す', short: '売り場', sp: true },
     { id: 'teaser', label: '本番はシークレット', short: '本番' },
@@ -146,13 +146,14 @@ window.BF_SHOP = {
   },
 
   coupon: {
-    kicker: 'まとめ買いでオトク',
+    kicker: 'クーポン3種',
     title: ['BLACK FRIDAY', '先行セール期間の', 'オトクなクーポン'],
-    isSample: true, /* クーポンが確定したら false。「仮」表示を消す */
+    isSample: false, /* 金額が仮のときは true で「金額は仮です」を出す */
+    /* cond=使える条件 / off=数字 / unit=[単位, OFF] / tag=小見出し / style:'black'=黒いチケット / url が # の間は「準備中」 */
     tiers: [
-      { min: '5,000円以上', off: '500', url: '#' },
-      { min: '10,000円以上', off: '1,500', url: '#' },
-      { min: '20,000円以上', off: '4,000', url: '#' }
+      { cond: '対象商品に使える', off: '50', unit: ['%', 'OFF'], url: '#' },
+      { tag: 'BLACK FRIDAYの黒クーポン', cond: '店内全品 3,500円以上で', off: '96', unit: ['円', 'OFF'], style: 'black', url: '#' },
+      { cond: '店内3点以上の購入で', off: '5', unit: ['%', 'OFF'], url: '#' }
     ],
     itemsHead: 'まとめ買いにおすすめ',
     items: [

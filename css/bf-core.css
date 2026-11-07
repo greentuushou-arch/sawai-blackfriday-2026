@@ -302,10 +302,12 @@ section { position: relative; padding: 15cqw 4.5cqw; }
   -webkit-mask: radial-gradient(circle 11px at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle 11px at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
           mask: radial-gradient(circle 11px at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle 11px at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
 }
+.ticket-tag { font: 700 clamp(17px, 5cqw, 24px)/1.3 var(--font-num); color: var(--c-gold); letter-spacing: .04em; }
+.ticket.is-black { background: var(--c-ink); color: var(--c-paper); }
+.ticket.is-black .ticket-off { color: var(--c-gold); }
 .ticket-min { grid-column: 1 / -1; font-size: 18px; font-weight: 700; }
 .ticket-off { display: flex; align-items: center; gap: 6px; color: var(--c-red); }
 .ticket-off b { font: 700 clamp(54px, 16cqw, 84px)/1 var(--font-num); letter-spacing: 0; }
-.t-2 .ticket-off b { font-size: clamp(60px, 18cqw, 96px); }
 .ticket-off span { font-size: 20px; font-weight: 700; line-height: 1.1; }
 .ticket-go { position: absolute; right: 0; top: 0; bottom: 0; width: 46px; display: grid; place-items: center; background: var(--c-red); color: #fff; font-size: 16px; font-weight: 700; writing-mode: vertical-rl; letter-spacing: .2em; border-left: 2px dashed var(--c-paper); }
 .coupon .sec-head h2 { font-size: clamp(30px, 9.6cqw, 52px); line-height: 1.25; }
