@@ -114,7 +114,7 @@ window.BF_SHOP = {
     /* どーんと見せる写真。差し替えは images/deal-hero.jpg を置き換えるだけ */
     hero: 'images/deal-hero.jpg',
     /* 先行中は商品名も価格も伏せて匂わせる。本番版では null */
-    secret: { lines: ['あの商品が！！！', '初の楽天DEAL20倍に！？'], hint: 'レビュー5万件突破記念', soon: 'お楽しみに！！' },
+    secret: { lines: ['あの商品が！！！', '初のポイント20倍？？'], hint: 'レビュー5万件突破記念', soon: 'お楽しみに！！' },
     item: {
       name: '1番選ばれるコーヒーセット', spec: 'グルメ大賞9度受賞', img: 'images/p-acsale1960.webp', price: 2788, from: true, ship: '送料無料',
       points: ['80杯分〜300杯分から選べます', 'フォルテシモとビクトリーの人気2種', '全サイズが特別企画の対象です'],
