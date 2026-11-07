@@ -82,8 +82,10 @@ body.lit .sign-main { animation: power .8s steps(1) forwards, shine 4.5s ease-in
 @keyframes power { 0%,18%,30%,48% { opacity: 0; } 10%,24%,40%,56%,100% { opacity: 1; } }
 @keyframes shine { 0% { background-position: 110% 0; } 45%,100% { background-position: -30% 0; } }
 
+.sign-band { margin-top: 2.6cqw; padding: .6cqw 0 1cqw; background: var(--c-red); color: #fff; font-size: clamp(30px, 10.6cqw, 58px); font-weight: 900; line-height: 1.25; letter-spacing: .14em; text-indent: .14em; }
+
 .fv-catch { margin-top: 5cqw; font-size: clamp(30px, 9.4cqw, 52px); font-weight: 900; line-height: 1.24; letter-spacing: .02em; }
-.fv-catch .ln:first-child { font-size: .72em; font-weight: 700; }
+.fv-catch .ln:last-child { color: var(--c-red-on-dark); }
 
 /* 箱から飛び出す福袋 */
 .burst { position: relative; height: 84cqw; margin-top: 5cqw; }
@@ -194,7 +196,7 @@ section { position: relative; padding: 15cqw 4.5cqw; }
 .sch:last-child { border-bottom: 1px solid rgba(233,194,100,.4); }
 .sch-no { grid-row: span 3; font-size: 19px; font-weight: 900; color: var(--c-gold); }
 .sch-when { font-size: 16px; color: var(--c-muted); }
-.sch-head { font-size: 24px; font-weight: 900; line-height: 1.3; }
+.sch-head { font-size: 24px; font-weight: 900; line-height: 1.3; word-break: keep-all; }
 .sch-body { font-size: 16px; line-height: 1.5; }
 .sch.is-on .sch-when { color: var(--c-gold); font-weight: 700; }
 
@@ -239,7 +241,7 @@ section { position: relative; padding: 15cqw 4.5cqw; }
 
 /* お買い得 */
 .poki { color: var(--c-gold); }
-.poki .ln:first-child { font: 800 clamp(60px, 21cqw, 112px)/1 var(--font-num); color: #ff3b3b; letter-spacing: -.02em; }
+.poki .ln:first-child { font: 800 clamp(60px, 21cqw, 112px)/1 var(--font-num); color: var(--c-red-on-dark); letter-spacing: -.02em; }
 .bargain .grid { margin-top: 22px; }
 .bargain .sub-head { color: var(--c-gold); margin-bottom: -10px; }
 
@@ -300,6 +302,7 @@ section { position: relative; padding: 15cqw 4.5cqw; }
   .rail-l { left: 0; }
   .rail-r { right: 0; }
   .rail-sign { font: 800 clamp(40px, 4.8vw, 72px)/.92 var(--font-num); color: var(--c-gold); text-align: center; }
+  .rail-band { margin-top: 8px; padding: 2px 16px 4px; background: var(--c-red); color: #fff; font-size: clamp(22px, 2.4vw, 34px); font-weight: 900; letter-spacing: .1em; white-space: nowrap; }
   .rail-shop { margin-top: 8px; font-size: 19px; font-weight: 700; color: var(--c-on-dark); }
   .rail .count { text-align: center; margin-top: 22px; }
   .rail .count-num b { font-size: clamp(24px, 2.2vw, 34px); }

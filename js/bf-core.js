@@ -69,7 +69,8 @@
     return '<section class="fv" id="top" data-zone="black">' +
       '<div class="sign" id="sign"><svg class="bulbs" aria-hidden="true"><rect class="b-off"/><rect class="b-on"/></svg>' +
       '<p class="sign-small">' + esc(f.signSmall) + '</p>' +
-      '<p class="sign-main" aria-label="' + esc(f.signLines.join(' ')) + '">' + lines(f.signLines) + '</p></div>' +
+      '<p class="sign-main" aria-label="' + esc(f.signLines.join(' ')) + '">' + lines(f.signLines) + '</p>' +
+      (f.signBand ? '<p class="sign-band">' + esc(f.signBand) + '</p>' : '') + '</div>' +
       '<h1 class="fv-catch">' + lines(f.catch) + '</h1>' +
       '<div class="tag"><span class="tag-lead">' + esc(f.priceLead) + '</span>' +
       '<span class="tag-num" data-slot="' + yen(f.price) + '">' + yen(f.price) + '</span>' +
@@ -186,6 +187,7 @@
   function renderRails() {
     document.getElementById('railL').innerHTML =
       '<p class="rail-sign">' + lines(D.fv.signLines) + '</p>' +
+      (D.fv.signBand ? '<p class="rail-band">' + esc(D.fv.signBand) + '</p>' : '') +
       '<p class="rail-shop">' + esc(D.name) + '</p>' +
       '<div class="count count-rail" data-count></div>' +
       '<a class="rail-tag" href="#feature"><span>' + esc(D.fv.priceLead) + '</span><b>' + yen(D.fv.price) + '</b><span>' + esc(D.fv.priceTail) + '</span></a>';

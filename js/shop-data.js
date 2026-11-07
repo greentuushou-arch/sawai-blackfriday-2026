@@ -24,7 +24,7 @@ window.BF_SHOP = {
   /* どの部品をどの順で並べるか。入れ替え・削除が可能 */
   sections: ['schedule', 'feature', 'deal', 'bargain', 'coupon', 'category', 'teaser'],
 
-  ticker: ['BLACK FRIDAY', '元旦の福袋をフライング販売', '福袋 2,027円から', '1,000円ポッキリ', 'まとめて買うほどクーポン'],
+  ticker: ['ブラックフライデー先行セール', '元旦の福袋をフライング販売', '福袋 2,027円から', '1,000円ポッキリ', 'まとめて買うほどクーポン'],
 
   nav: [
     { id: 'feature', label: 'フライング福袋', short: '福袋', sp: true },
@@ -38,7 +38,8 @@ window.BF_SHOP = {
   fv: {
     signSmall: '澤井珈琲の',
     signLines: ['BLACK', 'FRIDAY'],
-    catch: ['黒いコーヒー屋の', '黒い祭り'],
+    signBand: '先行セール',
+    catch: ['コーヒーは黒く', '値段は赤く'],
     boxLabel: 'フライング福袋',
     cards: ['images/f-10000.webp', 'images/f-newyear.webp', 'images/f-30000.webp', 'images/f-32p.webp'],
     priceLead: '福袋が',
@@ -49,14 +50,14 @@ window.BF_SHOP = {
   /* 店舗独自の施策の日付。楽天本番の日時は入れない */
   countdown: {
     startISO: '2026-11-12T10:00:00+09:00',
-    before: '先行スタートまで',
-    after: 'ただいま先行開催中'
+    before: '先行セール開始まで',
+    after: '先行セール開催中'
   },
 
   schedule: {
     title: ['お祭りは', '3回来ます'],
     items: [
-      { no: '第1弾', when: '11/12(木) 朝10時', head: '先行ブラックフライデー', body: '元旦用の福袋を、フライングで先行販売', startISO: '2026-11-12T10:00:00+09:00', href: '#feature' },
+      { no: '第1弾', when: '11/12(木) 朝10時', head: 'ブラックフライデー 先行セール', body: '元旦用の福袋を、フライングで先行販売', startISO: '2026-11-12T10:00:00+09:00', href: '#feature' },
       { no: '第2弾', when: '開催日は近日公開', head: '本番', body: 'ブラックフライデー福袋が約30種', href: '#teaser', manual: 'main' },
       { no: '第3弾', when: '11/22(日) 24時間限定', head: 'ポイント20倍', body: 'レビュー5万件突破の感謝企画', startISO: '2026-11-22T00:00:00+09:00', href: '#deal' }
     ]
