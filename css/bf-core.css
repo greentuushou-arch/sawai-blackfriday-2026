@@ -34,6 +34,7 @@ ul { list-style: none; }
 .stage { position: fixed; inset: 0; z-index: 0; background: var(--c-bg); transition: background .6s; overflow: hidden; }
 body[data-zone="red"] .stage { background: var(--c-red-deep); }
 body[data-zone="gold"] .stage { background: #2a1d08; }
+body[data-zone="newyear"] .stage { background: var(--c-newyear-deep); }
 .spot {
   position: absolute; top: -30vh; width: 70vw; height: 170vh; opacity: .3;
   background: conic-gradient(from 165deg at 50% 0, transparent 0 8deg, rgba(var(--c-spot), .85) 15deg, transparent 22deg 360deg);
@@ -84,8 +85,10 @@ body.lit .sign-main { animation: power .8s steps(1) forwards, shine 4.5s ease-in
 
 .sign-band { margin-top: 2.6cqw; padding: .6cqw 0 1cqw; background: var(--c-red); color: #fff; font-size: clamp(30px, 10.6cqw, 58px); font-weight: 900; line-height: 1.25; letter-spacing: .14em; text-indent: .14em; }
 
-.fv-catch { margin-top: 5cqw; font-size: clamp(30px, 9.4cqw, 52px); font-weight: 900; line-height: 1.24; letter-spacing: .02em; }
-.fv-catch .ln:last-child { color: var(--c-red-on-dark); }
+.fv-catch { margin-top: 5cqw; font-weight: 900; line-height: 1.18; letter-spacing: .02em; }
+.fv-catch .ln:first-child { font-size: clamp(28px, 9cqw, 50px); }
+.fv-catch .ln:last-child { font-size: clamp(50px, 16.4cqw, 90px); color: var(--c-gold); }
+.fv-ship { margin-top: 3cqw; padding: 1.4cqw 0 1.8cqw; border-top: 2px solid var(--c-gold); border-bottom: 2px solid var(--c-gold); font-size: clamp(28px, 9cqw, 50px); font-weight: 900; line-height: 1.25; color: #fff; letter-spacing: .06em; }
 
 /* 箱から飛び出す福袋 */
 .burst { position: relative; height: 84cqw; margin-top: 5cqw; }
@@ -196,9 +199,32 @@ section { position: relative; padding: 15cqw 4.5cqw; }
 .sch:last-child { border-bottom: 1px solid rgba(233,194,100,.4); }
 .sch-no { grid-row: span 3; font-size: 19px; font-weight: 900; color: var(--c-gold); }
 .sch-when { font-size: 16px; color: var(--c-muted); }
-.sch-head { font-size: 24px; font-weight: 900; line-height: 1.3; word-break: keep-all; }
+.sch-head { font-size: 24px; font-weight: 900; line-height: 1.3; word-break: auto-phrase; }
 .sch-body { font-size: 16px; line-height: 1.5; }
 .sch.is-on .sch-when { color: var(--c-gold); font-weight: 700; }
+
+/* 目玉: 新春版。上端の紅白幕 + 青海波で正月の売り場に切り替える */
+.z-newyear { padding-top: 15cqw; background: var(--c-newyear) var(--newyear-pattern) 0 0 / 56px 28px; color: #fff; overflow: hidden; }
+.z-newyear::before {
+  content: ''; position: absolute; left: 0; right: 0; top: 0; height: 7cqw; border-bottom: 3px solid var(--c-gold);
+  background: repeating-linear-gradient(90deg, #fff 0 7.5cqw, var(--c-red) 7.5cqw 15cqw);
+}
+.ny-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; column-gap: 12px; }
+.ny-head .kicker { color: var(--c-gold-light); margin-bottom: .1em; }
+.ny-year { font: 800 clamp(64px, 23cqw, 124px)/.95 var(--font-num); color: var(--c-gold); letter-spacing: 0; }
+.ny-title { font: 800 clamp(42px, 15cqw, 82px)/1.15 var(--font-festive); letter-spacing: .02em; white-space: nowrap; }
+.ny-seal {
+  display: grid; place-items: center; width: clamp(78px, 22cqw, 124px); aspect-ratio: 1; margin: 8px 6px 0 0; background: var(--c-paper); color: var(--c-red);
+  outline: 3px solid var(--c-gold); outline-offset: 3px; font-size: clamp(26px, 7.8cqw, 44px); font-weight: 900; line-height: 1.12; text-align: center; letter-spacing: .06em;
+}
+.ny-seal .ln { display: block; }
+.ny-ship { grid-column: 1 / -1; margin-top: 14px; padding: 6px 0 8px; background: var(--c-paper); color: var(--c-red); text-align: center; font-size: clamp(26px, 8cqw, 44px); font-weight: 900; line-height: 1.3; letter-spacing: .08em; }
+.ny-head .lead { grid-column: 1 / -1; margin-top: 16px; font-weight: 700; word-break: auto-phrase; }
+.z-newyear .band { background: var(--c-paper); outline: 3px solid var(--c-gold); }
+.z-newyear .band-lead { color: var(--c-ink); }
+.z-newyear .band-price { color: var(--c-red); }
+.z-newyear .hero-m { border: 1px solid #e3d6c2; }
+.z-newyear .hero-l { outline: 3px solid var(--c-gold); margin-top: 18px; }
 
 /* 目玉 */
 .band { margin-top: 26px; background: var(--c-red); padding: 18px 12px 12px; text-align: center; }
@@ -224,18 +250,29 @@ section { position: relative; padding: 15cqw 4.5cqw; }
 .percup span { font-size: 16px; font-weight: 700; }
 .percup b { font: 800 clamp(30px, 9.5cqw, 48px)/1.1 var(--font-num); color: var(--c-gold); }
 
-/* ポイント20倍 */
+/* 特別企画: 楽天スーパーDEAL 20％ポイント還元 */
 .deal { text-align: center; color: #fff; }
-.rays { position: absolute; left: 50%; top: 34cqw; width: 240cqw; height: 240cqw; margin: -120cqw 0 0 -120cqw;
-  background: repeating-conic-gradient(rgba(255,255,255,.07) 0 12deg, transparent 12deg 24deg); animation: spin 40s linear infinite; }
+.rays { position: absolute; left: 50%; top: 66cqw; width: 240cqw; height: 240cqw; margin: -120cqw 0 0 -120cqw;
+  background: repeating-conic-gradient(rgba(var(--c-spot), .09) 0 12deg, transparent 12deg 24deg); animation: spin 40s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .deal > *:not(.rays) { position: relative; }
-.deal-when { font-size: 21px; font-weight: 900; }
+.deal-date { display: flex; justify-content: center; align-items: baseline; color: #fff; line-height: 1; white-space: nowrap; }
+.deal-date span { font: 700 clamp(40px, 12.6cqw, 70px)/1 var(--font-num); }
+.deal-date span:last-child { font: 900 clamp(28px, 9cqw, 50px)/1 var(--font-ja); margin-left: .1em; }
+.deal-date b { font: 800 clamp(110px, 36cqw, 196px)/.9 var(--font-num); letter-spacing: -.02em; }
+.deal-limit { margin-top: 3cqw; padding: 1cqw 0 1.6cqw; background: var(--c-red); color: #fff; font-size: clamp(34px, 11cqw, 60px); font-weight: 900; line-height: 1.25; letter-spacing: .08em; }
+.deal-title { margin-top: 8cqw !important; }
 .deal-big { display: flex; justify-content: center; align-items: baseline; color: var(--c-gold); line-height: 1; white-space: nowrap; }
-.deal-head { font-size: clamp(26px, 8.4cqw, 44px); font-weight: 900; color: #fff; }
-.deal-num { font: 800 38cqw/1 var(--font-num); letter-spacing: -.03em; }
-.deal-unit { font-size: clamp(36px, 12cqw, 64px); font-weight: 900; }
-.deal-body { font-size: 18px; margin-bottom: 18px; }
+.deal-title span { display: block; font-weight: 900; line-height: 1.2; }
+.deal-title { margin-top: 10px; }
+.deal-tag { font-size: clamp(38px, 12.6cqw, 68px); color: var(--c-gold); }
+.deal-name { margin-top: 4px; font-size: clamp(29px, 9.6cqw, 52px); color: #fff; white-space: nowrap; }
+.deal-head { margin-top: 2px; font-size: clamp(38px, 12.6cqw, 68px); font-weight: 900; line-height: 1.2; color: #fff; }
+.deal-why { margin: 16px 0 20px; border-top: 2px solid var(--c-gold); border-bottom: 2px solid var(--c-gold); }
+.deal-why li { padding: 10px 0; font-size: clamp(18px, 5.6cqw, 28px); font-weight: 700; line-height: 1.4; word-break: auto-phrase; }
+.deal-why li + li { border-top: 1px solid rgba(233,194,100,.45); }
+.deal-num { font: 800 50cqw/.95 var(--font-num); letter-spacing: -.03em; }
+.deal-unit { font-size: clamp(60px, 20cqw, 108px); font-weight: 900; }
 .deal-item { display: grid; grid-template-columns: 42% 1fr; align-items: center; background: var(--c-paper); color: var(--c-ink); text-align: left; }
 .deal-item .price { margin-top: 6px; }
 

@@ -10,6 +10,7 @@
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var CONFETTI_COUNT = { load: 120, section: 46 };
   var SLOT_MS_PER_DIGIT = 260;
+  var SLOT_AREAS = '.fv, .feature'; /* 数字がそろう演出は福袋の場所だけ。ほかの価格は最初から止まった状態 */
 
   /* ---------- 小さな道具 ---------- */
   function esc(s) {
@@ -72,6 +73,7 @@
       '<p class="sign-main" aria-label="' + esc(f.signLines.join(' ')) + '">' + lines(f.signLines) + '</p>' +
       (f.signBand ? '<p class="sign-band">' + esc(f.signBand) + '</p>' : '') + '</div>' +
       '<h1 class="fv-catch">' + lines(f.catch) + '</h1>' +
+      (f.ship ? '<p class="fv-ship">' + esc(f.ship) + '</p>' : '') +
       '<div class="tag"><span class="tag-lead">' + esc(f.priceLead) + '</span>' +
       '<span class="tag-num" data-slot="' + yen(f.price) + '">' + yen(f.price) + '</span>' +
       '<span class="tag-tail">' + esc(f.priceTail) + '</span></div>' +
@@ -111,8 +113,13 @@
 
   PARTS.feature = function () {
     var F = D.feature;
-    return '<section class="feature z-black" id="feature" data-zone="black" data-burst>' +
-      secHead(F.kicker, F.title, F.lead) +
+    var ny = F.newYear;
+    var head = ny
+      ? '<header class="ny-head rv"><div><p class="kicker">' + esc(F.kicker) + '</p><p class="ny-year">' + esc(ny.year) + '</p><h2 class="ny-title">' + esc(ny.title) + '</h2></div>' +
+        '<p class="ny-seal">' + lines(ny.seal) + '</p>' + (ny.ship ? '<p class="ny-ship">' + esc(ny.ship) + '</p>' : '') + '<p class="lead">' + esc(F.lead) + '</p></header>'
+      : secHead(F.kicker, F.title, F.lead);
+    var zone = ny ? 'newyear' : 'black';
+    return '<section class="feature ' + (ny ? 'z-newyear' : 'z-black') + '" id="feature" data-zone="' + zone + '" data-burst>' + head +
       '<div class="band rv"><p class="band-lead">' + esc(F.bandLead) + '</p><p class="band-price"><span data-slot="' + yen(F.bandPrice) + '">' + yen(F.bandPrice) + '</span><small>' + esc(F.bandTail) + '</small></p>' +
       '<div class="hero-pair">' + F.half.map(halfCard).join('') + '</div></div>' +
       F.wide.map(wideCard).join('') + '</section>';
@@ -120,10 +127,13 @@
 
   PARTS.deal = function () {
     var d = D.deal;
-    return '<section class="deal z-red" id="deal" data-zone="red"><i class="rays" aria-hidden="true"></i>' +
-      '<p class="deal-when rv">' + esc(d.when) + '</p>' +
-      '<p class="deal-big rv"><span class="deal-head">' + esc(d.head) + '</span><span class="deal-num">' + esc(d.number) + '</span><span class="deal-unit">' + esc(d.unit) + '</span></p>' +
-      '<p class="deal-body rv">' + esc(d.body) + '</p>' +
+    return '<section class="deal z-black" id="deal" data-zone="black" data-burst><i class="rays" aria-hidden="true"></i>' +
+      '<p class="deal-date rv"><span>' + esc(d.date.pre) + '</span><b>' + esc(d.date.day) + '</b><span>' + esc(d.date.tail) + '</span></p>' +
+      '<p class="deal-limit rv">' + esc(d.limit) + '</p>' +
+      '<h2 class="deal-title rv"><span class="deal-tag">' + esc(d.tag) + '</span><span class="deal-name">' + esc(d.name) + '</span></h2>' +
+      '<p class="deal-big rv"><span class="deal-num">' + esc(d.number) + '</span><span class="deal-unit">' + esc(d.unit) + '</span></p>' +
+      '<p class="deal-head rv">' + esc(d.head) + '</p>' +
+      '<ul class="deal-why rv">' + d.reasons.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ul>' +
       '<a class="deal-item rv" href="' + esc(d.item.url) + '"><img src="' + esc(d.item.img) + '" alt="' + esc(d.item.name) + '" loading="lazy">' +
       '<span class="card-body"><span class="card-name">' + esc(d.item.name) + '</span><span class="card-spec">' + esc(d.item.spec) + '</span>' + priceHtml(d.item) + '</span></a>' +
       '<a class="btn btn-gold rv" href="' + esc(d.link) + '">' + esc(d.linkLabel) + '</a></section>';
@@ -249,7 +259,7 @@
 
   /* ---------- 数字がそろう演出 ---------- */
   function spin(el) {
-    if (REDUCED || el.dataset.done) return;
+    if (REDUCED || el.dataset.done || !el.closest(SLOT_AREAS)) return;
     el.dataset.done = '1';
     var target = el.dataset.slot;
     var digits = target.split('');

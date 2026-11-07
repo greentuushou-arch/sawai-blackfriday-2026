@@ -24,11 +24,11 @@ window.BF_SHOP = {
   /* どの部品をどの順で並べるか。入れ替え・削除が可能 */
   sections: ['schedule', 'feature', 'deal', 'bargain', 'coupon', 'category', 'teaser'],
 
-  ticker: ['ブラックフライデー先行セール', '元旦の福袋をフライング販売', '福袋 2,027円から', '1,000円ポッキリ', 'まとめて買うほどクーポン'],
+  ticker: ['ブラックフライデー先行セール', '2027年 新春福袋を数量限定で先行販売', '福袋 2,027円から', '1,000円ポッキリ', 'まとめて買うほどクーポン'],
 
   nav: [
     { id: 'feature', label: 'フライング福袋', short: '福袋', sp: true },
-    { id: 'deal', label: 'ポイント20倍', short: '20倍' },
+    { id: 'deal', label: '楽天スーパーDEAL 20％', short: '20％' },
     { id: 'bargain', label: '1,000円ポッキリ', short: 'お買い得', sp: true },
     { id: 'coupon', label: 'まとめ買いクーポン', short: 'クーポン', sp: true },
     { id: 'category', label: '売り場から探す', short: '売り場', sp: true },
@@ -39,7 +39,8 @@ window.BF_SHOP = {
     signSmall: '澤井珈琲の',
     signLines: ['BLACK', 'FRIDAY'],
     signBand: '先行セール',
-    catch: ['コーヒーは黒く', '値段は赤く'],
+    catch: ['2027年福袋を', '先行販売！'],
+    ship: '12月中旬発送！',
     boxLabel: 'フライング福袋',
     cards: ['images/f-10000.webp', 'images/f-newyear.webp', 'images/f-30000.webp', 'images/f-32p.webp'],
     priceLead: '福袋が',
@@ -59,14 +60,16 @@ window.BF_SHOP = {
     items: [
       { no: '第1弾', when: '11/12(木) 朝10時', head: 'ブラックフライデー 先行セール', body: '元旦用の福袋を、フライングで先行販売', startISO: '2026-11-12T10:00:00+09:00', href: '#feature' },
       { no: '第2弾', when: '開催日は近日公開', head: '本番', body: 'ブラックフライデー福袋が約30種', href: '#teaser', manual: 'main' },
-      { no: '第3弾', when: '11/22(日) 24時間限定', head: 'ポイント20倍', body: 'レビュー5万件突破の感謝企画', startISO: '2026-11-22T00:00:00+09:00', href: '#deal' }
+      { no: '第3弾', when: '11/22(日) 24時間限定', head: '楽天スーパーDEAL 20％ポイント還元', body: '特別企画！レビュー5万件突破記念', startISO: '2026-11-22T00:00:00+09:00', href: '#deal' }
     ]
   },
 
   feature: {
     kicker: 'フライング福袋',
+    /* newYear を消すと通常の見出しに戻る(title を使う) */
+    newYear: { year: '2027', title: '新春福袋', seal: ['数量', '限定'], ship: '12月中旬発送' },
     title: ['元旦まで', '待てない人へ'],
-    lead: '元旦の初売りに用意した福袋を、ひと足先にお出しします。',
+    lead: '元旦の初売りのために用意した2027年の福袋を、数量限定でひと足先にお届けします。なくなり次第終了です。',
     bandPrice: 2027,
     bandLead: '2027年のはじまりを',
     bandTail: '円で',
@@ -97,13 +100,16 @@ window.BF_SHOP = {
   },
 
   deal: {
-    when: '11/22(日) 24時間だけ',
+    date: { pre: '11/', day: '22', tail: '(日)' },
+    limit: '22日限定企画',
+    tag: '特別企画！',
+    name: '楽天スーパーDEAL',
     number: '20',
-    unit: '倍',
-    head: 'ポイント',
-    body: 'レビュー5万件の「おいしい」へのお返しです。',
+    unit: '％',
+    head: 'ポイント還元',
+    reasons: ['レビュー5万件突破記念', 'ブラックフライデーの超目玉企画'],
     item: { name: '1番選ばれるコーヒーセット', spec: 'グルメ大賞9度受賞', img: 'images/p-acsale1960.webp', price: 2788, from: true, url: 'https://item.rakuten.co.jp/sawaicoffee-tea/ac-sale-1960/' },
-    linkLabel: '20倍の特設ページを見る',
+    linkLabel: '特別企画のページを見る',
     link: 'https://greentuushou-arch.github.io/sawai-review50k-2026/'
   },
 
@@ -202,6 +208,7 @@ window.BF_SHOP = {
 
   notes: [
     '価格はすべて税込です。',
+    '福袋は数量限定です。なくなり次第終了します。',
     '商品の内容は変更になる場合があります。福袋の内容はお選びいただけません。',
     'クーポンは取得が必要です。対象商品と利用条件はクーポンページでご確認ください。'
   ]
