@@ -21,7 +21,7 @@ ul { list-style: none; }
 .ln { display: block; }
 
 .col {
-  position: relative; z-index: 2; width: 100%; max-width: 800px; margin: 0 auto;
+  position: relative; z-index: 2; width: 100%; max-width: 700px; margin: 0 auto;
   background: var(--c-bg); container-type: inline-size; overflow: hidden;
 }
 .demo { background: var(--c-paper); color: var(--c-ink); font-size: 14px; line-height: 1.4; text-align: center; padding: 6px 12px; }
@@ -347,7 +347,7 @@ section { position: relative; padding: 15cqw 4.5cqw; }
 .foot li + li { margin-top: 4px; }
 
 /* ---------- 7. PC調整 ---------- */
-@media (min-width: 1400px) {
+@media (min-width: 1240px) {
   body { padding-bottom: 0; }
   .tabbar { display: none; }
   .col { box-shadow: 0 0 0 1px rgba(233,194,100,.35); }
@@ -357,7 +357,7 @@ section { position: relative; padding: 15cqw 4.5cqw; }
   .card:hover, .deal-item:hover { transform: translateY(-4px); }
 
   .rail {
-    position: fixed; z-index: 3; top: 0; bottom: 0; width: calc((100vw - 800px) / 2); display: flex; flex-direction: column;
+    position: fixed; z-index: 3; top: 0; bottom: 0; width: calc((100vw - 700px) / 2); display: flex; flex-direction: column;
     justify-content: center; align-items: center; padding: 24px clamp(14px, 2vw, 44px);
   }
   .rail-l { left: 0; }
@@ -377,13 +377,15 @@ section { position: relative; padding: 15cqw 4.5cqw; }
     display: flex; align-items: center; justify-content: space-between; padding: 11px 14px; font-size: 17px; font-weight: 700;
     background: var(--c-bg-2); color: var(--c-on-dark); border: 1px solid var(--c-gold); transition: background .2s, color .2s, transform .2s;
   }
+  .rail-nav a { font-size: 15px; }
+  .rail-nav span { white-space: nowrap; }
   .rail-nav em { font: 700 19px var(--font-num); color: var(--c-gold); }
   .rail-nav a:hover, .rail-nav a.is-here { background: var(--c-gold); color: var(--c-ink); transform: translateX(-4px); }
   .rail-nav a:hover em, .rail-nav a.is-here em { color: var(--c-red-deep); }
 }
 
 /* メイン幅が広いとき(PC): 商品は4列、大きい福袋は写真と説明を横並び */
-@container (min-width: 700px) {
+@container (min-width: 680px) {
   .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .price .num { font-size: 32px; }
   .price.is-long .num { font-size: 27px; }
