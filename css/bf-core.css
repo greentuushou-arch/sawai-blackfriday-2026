@@ -54,10 +54,10 @@ body[data-zone="newyear"] .stage { background: var(--c-newyear-deep); }
 }
 .tabbar a { display: grid; place-items: center; height: 58px; font-size: 15px; font-weight: 700; color: var(--c-on-dark); transition: background .2s, color .2s; }
 .tabbar a + a { border-left: 1px solid rgba(255,255,255,.14); }
-.tabbar a.is-here { background: var(--c-gold); color: var(--c-ink); }
+.tabbar a.is-here { background: var(--c-gold); background-image: var(--g-gold); color: var(--c-ink); }
 
 /* ---------- 3. ティッカー ---------- */
-.ticker { overflow: hidden; background: var(--c-gold); color: var(--c-ink); }
+.ticker { overflow: hidden; background: var(--c-gold); background-image: var(--g-gold); color: var(--c-ink); }
 .ticker-run { display: flex; width: max-content; animation: run 34s linear infinite; }
 .ticker-run span { font-size: 16px; font-weight: 700; padding: 7px 0; white-space: nowrap; }
 .ticker-run span::after { content: ''; display: inline-block; width: 7px; height: 7px; margin: 0 18px 2px; background: var(--c-red); transform: rotate(45deg); }
@@ -144,7 +144,7 @@ body.lit .fan-3 { animation-delay: 1.15s, 2.1s; }
 section { position: relative; padding: 15cqw 4.5cqw; }
 .z-black { background: var(--c-bg); }
 .z-red { background: var(--c-red-deep); overflow: hidden; }
-.z-gold { background: var(--c-gold); color: var(--c-ink); }
+.z-gold { background: var(--c-gold); background-image: linear-gradient(160deg, #d9a21f 0%, #f2c74a 30%, #ffe08a 50%, #f0c140 68%, #d49a1a 100%); color: var(--c-ink); }
 
 .sec-head h2 { font-size: clamp(38px, 13cqw, 70px); font-weight: 700; line-height: 1.16; letter-spacing: .05em; }
 .kicker { font-size: 18px; font-weight: 700; color: var(--c-gold); letter-spacing: .1em; margin-bottom: .5em; }
@@ -169,7 +169,7 @@ section { position: relative; padding: 15cqw 4.5cqw; }
 .btn::after { content: ''; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.5), transparent); animation: glint 3.2s ease-in-out infinite; }
 @keyframes glint { 0%,62% { left: -60%; } 100% { left: 130%; } }
 .btn-s { padding: 11px 6px; font-size: 16px; }
-.btn-gold { background: var(--c-gold); color: var(--c-ink); }
+.btn-gold { background: var(--c-gold); background-image: var(--g-gold); color: var(--c-ink); }
 
 .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .card { display: flex; flex-direction: column; background: var(--c-paper); color: var(--c-ink); }
@@ -316,10 +316,10 @@ section { position: relative; padding: 15cqw 4.5cqw; }
 
 /* 売り場 */
 .chips { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 22px 0 8px; }
-.chip { padding: 12px 6px; background: var(--c-gold); color: var(--c-ink); font-size: 17px; font-weight: 700; text-align: center; }
+.chip { padding: 12px 6px; background: var(--c-gold); background-image: var(--g-gold); color: var(--c-ink); font-size: 17px; font-weight: 700; text-align: center; }
 .floor { margin-top: 36px; scroll-margin-top: 10px; }
 .floor-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 26px; font-weight: 700; line-height: 1.3; }
-.fl-no { flex: none; display: grid; place-items: center; width: 50px; height: 50px; background: var(--c-gold); color: var(--c-ink); font: 700 21px var(--font-num); }
+.fl-no { flex: none; display: grid; place-items: center; width: 50px; height: 50px; background: var(--c-gold); background-image: var(--g-gold); color: var(--c-ink); font: 700 21px var(--font-num); }
 .more { display: block; margin-top: 10px; padding: 12px; border: 2px solid var(--c-gold); color: var(--c-gold); font-size: 17px; font-weight: 700; text-align: center; }
 
 /* 本番予告 */
@@ -383,7 +383,7 @@ section { position: relative; padding: 15cqw 4.5cqw; }
   .rail-nav a { font-size: 15px; }
   .rail-nav span { white-space: nowrap; }
   .rail-nav em { font: 700 19px var(--font-num); color: var(--c-gold); }
-  .rail-nav a:hover, .rail-nav a.is-here { background: var(--c-gold); color: var(--c-ink); transform: translateX(-4px); }
+  .rail-nav a:hover, .rail-nav a.is-here { background: var(--c-gold); background-image: var(--g-gold); color: var(--c-ink); transform: translateX(-4px); }
   .rail-nav a:hover em, .rail-nav a.is-here em { color: var(--c-red-deep); }
 }
 

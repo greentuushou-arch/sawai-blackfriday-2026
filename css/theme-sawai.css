@@ -6,9 +6,11 @@
 :root {
   --c-bg: #0b0806;         /* ページのいちばん暗い面 */
   --c-bg-2: #171009;       /* 暗い面のバリエーション(焙煎した豆の黒) */
-  --c-gold: #e9c264;       /* 主役の金 */
-  --c-gold-light: #fff0bf; /* 金グラデのハイライト */
-  --c-gold-deep: #a97a22;  /* 金グラデの影 */
+  --c-gold: #e8b22e;       /* 主役の金(ベージュに見えないよう黄みと濃さを上げた) */
+  --c-gold-light: #ffe58f; /* 金グラデのハイライト */
+  --c-gold-deep: #9a6a0a;  /* 金グラデの影 */
+  /* 金の面(帯・ボタン・クーポン地)に使う金属っぽいグラデーション */
+  --g-gold: linear-gradient(115deg, #b9840f 0%, #e8b22e 22%, #ffe58f 46%, #f0c246 58%, #c48d14 82%, #e8b22e 100%);
   --c-red: #e60012;        /* 価格の赤。白地で使う */
   --c-red-on-dark: #ff3b3b; /* 黒地に載せる赤 */
   --c-red-deep: #8f0410;   /* 帯・赤ゾーンの面 */
@@ -20,7 +22,7 @@
   --c-newyear-deep: #5c0810; /* 新春ゾーンの両脇 */
   /* 青海波。紅の上に金の線 */
   --newyear-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='28'%3E%3Cdefs%3E%3Cg id='w' fill='%23b5121f' stroke='%23e9c264' stroke-opacity='.3' stroke-width='1'%3E%3Ccircle r='28'/%3E%3Ccircle r='20'/%3E%3Ccircle r='12'/%3E%3C/g%3E%3C/defs%3E%3Cuse href='%23w' x='0' y='0'/%3E%3Cuse href='%23w' x='56' y='0'/%3E%3Cuse href='%23w' x='28' y='14'/%3E%3Cuse href='%23w' x='0' y='28'/%3E%3Cuse href='%23w' x='56' y='28'/%3E%3Cuse href='%23w' x='28' y='42'/%3E%3C/svg%3E");
-  --c-spot: 233, 194, 100; /* 背景スポットライトの色 (RGB) */
+  --c-spot: 232, 178, 46; /* 背景スポットライトの色 (RGB) */
 
   --font-ja: 'Noto Sans JP', sans-serif;
   --font-festive: 'Shippori Mincho B1', serif; /* 新春福袋の見出しだけ */
