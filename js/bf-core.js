@@ -54,6 +54,14 @@
       (lead ? '<p class="lead">' + esc(lead) + '</p>' : '') + '</header>';
   }
 
+  /* 期間の大きな表示。p = { label, from:[日付,曜日,時刻], to:[...], note } */
+  function periodHtml(p) {
+    if (!p) return '';
+    var row = function (a) { return '<span class="pd-row"><b>' + esc(a[0]) + '</b><span>' + esc(a[1]) + '</span><b>' + esc(a[2]) + '</b></span>'; };
+    return '<div class="period rv"><p class="pd-label">' + esc(p.label) + '</p><p class="pd-when">' + row(p.from) + '<span class="pd-to">〜</span>' + row(p.to) + '</p>' +
+      (p.note ? '<p class="pd-note">' + esc(p.note) + '</p>' : '') + '</div>';
+  }
+
   /* ---------- パーツ ---------- */
   var PARTS = {};
 
@@ -92,7 +100,7 @@
         '<span class="sch-no">' + esc(it.no) + '</span>' +
         '<span class="sch-when">' + esc(it.when) + '</span>' +
         '<span class="sch-head">' + esc(it.head) + '</span>' +
-        '<span class="sch-body">' + esc(it.body) + '</span></a>';
+        '<span class="sch-body">' + (Array.isArray(it.body) ? lines(it.body) : esc(it.body)) + '</span></a>';
     }).join('');
     return '<section class="schedule z-black" id="schedule" data-zone="black"><h2 class="sch-title rv">' + lines(S.title) + '</h2><div class="sch-list">' + rows + '</div></section>';
   };
@@ -116,7 +124,9 @@
     var ny = F.newYear;
     var head = ny
       ? '<header class="ny-head rv"><div><p class="kicker">' + esc(F.kicker) + '</p><p class="ny-year">' + esc(ny.year) + '</p><h2 class="ny-title">' + esc(ny.title) + '</h2></div>' +
-        '<p class="ny-seal">' + lines(ny.seal) + '</p>' + (ny.ship ? '<p class="ny-ship">' + esc(ny.ship) + '</p>' : '') + '<p class="lead">' + esc(F.lead) + '</p></header>'
+        '<p class="ny-seal">' + lines(ny.seal) + '</p>' + '<p class="ny-catch">' + lines(F.title) + '</p>' +
+        '<div class="ny-period">' + periodHtml(F.period) + '</div>' +
+        (ny.ship ? '<p class="ny-ship">' + esc(ny.ship) + '</p>' : '') + '<p class="lead">' + esc(F.lead) + '</p></header>'
       : secHead(F.kicker, F.title, F.lead);
     var zone = ny ? 'newyear' : 'black';
     return '<section class="feature ' + (ny ? 'z-newyear' : 'z-black') + '" id="feature" data-zone="' + zone + '" data-burst>' + head +
@@ -128,6 +138,7 @@
   PARTS.deal = function () {
     var d = D.deal;
     return '<section class="deal z-black" id="deal" data-zone="black" data-burst><i class="rays" aria-hidden="true"></i>' +
+      (d.notice ? '<p class="deal-notice rv">' + esc(d.notice) + '</p>' : '') +
       '<p class="deal-date rv"><span>' + esc(d.date.pre) + '</span><b>' + esc(d.date.day) + '</b><span>' + esc(d.date.tail) + '</span></p>' +
       '<p class="deal-limit rv">' + esc(d.limit) + '</p>' +
       '<h2 class="deal-title rv"><span class="deal-tag">' + esc(d.tag) + '</span><span class="deal-name">' + esc(d.name) + '</span></h2>' +
@@ -142,7 +153,9 @@
   PARTS.bargain = function () {
     var b = D.bargain;
     return '<section class="bargain z-black" id="bargain" data-zone="black">' +
-      '<header class="sec-head rv"><p class="kicker">' + esc(b.kicker) + '</p><h2 class="poki">' + lines(b.title) + '</h2><p class="lead">' + esc(b.lead) + '</p></header>' +
+      '<header class="sec-head rv"><p class="kicker">' + esc(b.kicker) + '</p><h2 class="poki">' + b.title.map(function (t) {
+        return '<span class="ln">' + esc(t).replace(/円$/, '<small>円</small>') + '</span>';
+      }).join('') + '</h2><p class="lead">' + esc(b.lead) + '</p></header>' +
       '<div class="grid">' + b.items.map(miniCard).join('') + '</div>' +
       (b.more ? '<h3 class="sub-head rv">' + esc(b.more.head) + '</h3><div class="grid">' + b.more.items.map(miniCard).join('') + '</div>' : '') + '</section>';
   };
@@ -183,7 +196,8 @@
     }
     var bags = '';
     for (var i = 0; i < t.count; i++) bags += '<i style="--i:' + i + '">' + BAG_SVG + '</i>';
-    return '<section class="teaser z-black" id="teaser" data-zone="black"><p class="kicker rv">' + esc(t.kicker) + '</p>' +
+    var period = periodHtml(t.period);
+    return '<section class="teaser z-black" id="teaser" data-zone="black"><p class="kicker rv">' + esc(t.kicker) + '</p>' + period +
       '<p class="teaser-num rv"><span>' + esc(t.numberLead) + '</span><b>' + esc(t.numberText) + '</b><span>' + esc(t.unit) + 'の</span></p><h2 class="rv">' + esc(t.title) + '</h2>' +
       '<div class="bags" data-bags>' + bags + '</div><p class="lead rv">' + esc(t.body) + '</p></section>';
   };

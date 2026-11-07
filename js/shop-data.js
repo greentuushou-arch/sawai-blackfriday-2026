@@ -3,8 +3,9 @@
    ページの中身はここだけ編集すれば変わる。
    見た目は css/theme-*.css、部品の動きは js/bf-core.js。
 
-   【日時の注意】楽天ブラックフライデー本番の開催日時は、ページにも
-   このソースにも書かない(本文・カレンダー・カウントダウンすべて)。
+   【日時の注意】楽天ブラックフライデー本番の開催日時は、原則ページにも
+   ソースにも書かない。澤井珈琲はユーザー指示(2026-11-07)で本番期間を
+   teaser.period に明記している。他店へ流用するときは消すこと。
    自動で日付を判定するのは店舗独自の施策(startISO)のみ。
    本番が始まったら mainLive を true にして手動で切り替える。
 
@@ -22,17 +23,17 @@ window.BF_SHOP = {
   mainLive: false,
 
   /* どの部品をどの順で並べるか。入れ替え・削除が可能 */
-  sections: ['schedule', 'feature', 'deal', 'bargain', 'coupon', 'category', 'teaser'],
+  sections: ['schedule', 'feature', 'bargain', 'coupon', 'category', 'teaser', 'deal'],
 
   ticker: ['ブラックフライデー先行セール', '2027年 新春福袋を数量限定で先行販売', '福袋 2,027円から', '1,000円ポッキリ', 'まとめて買うほどクーポン'],
 
   nav: [
     { id: 'feature', label: 'フライング福袋', short: '福袋', sp: true },
-    { id: 'deal', label: '楽天スーパーDEAL 20％', short: '20％' },
     { id: 'bargain', label: '1,000円ポッキリ', short: 'お買い得', sp: true },
     { id: 'coupon', label: 'まとめ買いクーポン', short: 'クーポン', sp: true },
     { id: 'category', label: '売り場から探す', short: '売り場', sp: true },
-    { id: 'teaser', label: '本番の福袋 約30種', short: '本番' }
+    { id: 'teaser', label: 'BLACK FRIDAY福袋', short: '本番' },
+    { id: 'deal', label: '楽天スーパーDEAL 20倍', short: '20倍' }
   ],
 
   fv: {
@@ -56,19 +57,19 @@ window.BF_SHOP = {
   },
 
   schedule: {
-    title: ['お祭りは', '3回来ます'],
+    title: ['お祭りは', '2回来ます'],
     items: [
-      { no: '第1弾', when: '11/12(木) 朝10時', head: 'ブラックフライデー 先行セール', body: '元旦用の福袋を、フライングで先行販売', startISO: '2026-11-12T10:00:00+09:00', href: '#feature' },
-      { no: '第2弾', when: '開催日は近日公開', head: '本番', body: 'ブラックフライデー福袋が約30種', href: '#teaser', manual: 'main' },
-      { no: '第3弾', when: '11/22(日) 24時間限定', head: '楽天スーパーDEAL 20％ポイント還元', body: '特別企画！レビュー5万件突破記念', startISO: '2026-11-22T00:00:00+09:00', href: '#deal' }
+      { no: '第1弾', when: '11/13(金) 0:00〜11/18(水) 23:59', head: 'ブラックフライデー 先行セール', body: ['2027年 新春福袋', '6日間限定販売'], startISO: '2026-11-13T00:00:00+09:00', href: '#feature' },
+      { no: '第2弾', when: '11/19(木) 20:00〜11/25(水) 01:59', head: 'ブラックフライデー本番', body: ['BLACK FRIDAY福袋 30種', '22日だけのポイント20倍企画'], href: '#teaser', manual: 'main' }
     ]
   },
 
   feature: {
-    kicker: 'フライング福袋',
+    kicker: '第1弾 フライング福袋',
     /* newYear を消すと通常の見出しに戻る(title を使う) */
     newYear: { year: '2027', title: '新春福袋', seal: ['数量', '限定'], ship: '12月中旬発送' },
-    title: ['元旦まで', '待てない人へ'],
+    title: ['元旦福袋が', 'フライング購入できる', 'チャンス！'],
+    period: { label: '先行セール 第1弾', from: ['11/13', '(金)', '0:00'], to: ['11/18', '(水)', '23:59'], note: '6日間限定販売！' },
     lead: '元旦の初売りのために用意した2027年の福袋を、数量限定でひと足先にお届けします。なくなり次第終了です。',
     bandPrice: 2027,
     bandLead: '2027年のはじまりを',
@@ -100,13 +101,14 @@ window.BF_SHOP = {
   },
 
   deal: {
+    notice: '第2弾 本番の特別企画',
     date: { pre: '11/', day: '22', tail: '(日)' },
     limit: '22日限定企画',
     tag: '特別企画！',
     name: '楽天スーパーDEAL',
     number: '20',
-    unit: '％',
-    head: 'ポイント還元',
+    unit: '倍',
+    head: '20％ポイント還元',
     reasons: ['レビュー5万件突破記念', 'ブラックフライデーの超目玉企画'],
     item: { name: '1番選ばれるコーヒーセット', spec: 'グルメ大賞9度受賞', img: 'images/p-acsale1960.webp', price: 2788, from: true, url: 'https://item.rakuten.co.jp/sawaicoffee-tea/ac-sale-1960/' },
     linkLabel: '特別企画のページを見る',
@@ -136,7 +138,7 @@ window.BF_SHOP = {
 
   coupon: {
     kicker: 'まとめ買いでオトク',
-    title: ['買うほど', '引かれる'],
+    title: ['BLACK FRIDAY', '先行セール期間の', 'オトクなクーポン'],
     isSample: true, /* クーポンが確定したら false。「仮」表示を消す */
     tiers: [
       { min: '5,000円以上', off: '500', url: '#' },
@@ -196,11 +198,12 @@ window.BF_SHOP = {
 
   teaser: {
     kicker: '第2弾 本番',
+    period: { label: 'ブラックフライデー本番', from: ['11/19', '(木)', '20:00'], to: ['11/25', '(水)', '01:59'] },
     count: 30,
-    numberLead: '約',
+    numberLead: '',
     numberText: '30',
     unit: '種',
-    title: '福袋がそろいます',
+    title: 'BLACK FRIDAY 福袋',
     body: 'ラインナップは本番の開始とともに公開します。',
     /* 本番の福袋。mainLive:true のときに一覧表示する */
     bags: []
