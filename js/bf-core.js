@@ -220,7 +220,8 @@
       /* 先行中は本番の中身を伏せて匂わせる。袋の数で種類数が分からないよう secret.count 個だけ並べる */
       bags = '';
       for (var j = 0; j < (t.secret.count || 12); j++) bags += '<i style="--i:' + j + '">' + BAG_SVG + '</i>';
-      return '<section class="teaser z-black is-secret" id="teaser" data-zone="black"><p class="kicker rv">' + esc(t.kicker) + '</p>' + period +
+      var kick = Array.isArray(t.kicker) ? '<h2 class="teaser-head rv">' + lines(t.kicker) + '</h2>' : '<p class="kicker rv">' + esc(t.kicker) + '</p>';
+      return '<section class="teaser z-black is-secret" id="teaser" data-zone="black">' + kick + period +
         '<h2 class="secret-title rv">' + lines(t.secret.title) + '</h2>' +
         '<div class="bags" data-bags>' + bags + '</div><p class="soon rv">' + esc(t.secret.soon) + '</p></section>';
     }
