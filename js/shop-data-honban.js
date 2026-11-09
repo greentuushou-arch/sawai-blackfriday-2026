@@ -8,7 +8,7 @@
   var base = window.BF_SHOP;
 
   window.BF_SHOP = Object.assign({}, base, {
-    sections: ['teaser', 'deal', 'coupon', 'bargain', 'category'],
+    sections: ['teaser', 'deal', 'duo', 'coupon', 'bargain', 'category'],
 
     ticker: ['BLACK FRIDAY 本番', '30種のBLACK FRIDAY福袋', '11/22は楽天スーパーDEAL 20倍', '1,000円ポッキリ', 'オトクなクーポン'],
 

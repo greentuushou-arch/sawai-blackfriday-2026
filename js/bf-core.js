@@ -272,6 +272,30 @@
     return '<section class="lineup z-black" id="lineup" data-zone="black">' + secHead(L.kicker, L.title, L.lead) + groups + '</section>';
   };
 
+  /* 白と黒: 左右で白地と黒地に分けた2商品の紹介 */
+  PARTS.duo = function () {
+    var d = D.duo;
+    var heads = d.heads.map(function (h) {
+      return '<p class="duo-h duo-h--' + esc(h.tone) + '">' + esc(h.text) + '</p>';
+    }).join('');
+    var cards = d.items.map(function (it) {
+      return '<article class="duo-card duo-card--' + esc(it.tone) + ' rv">' +
+        '<a class="duo-img" href="' + esc(it.url) + '"><img src="' + esc(it.img) + '" alt="' + esc(it.name) + '" loading="lazy"></a>' +
+        '<div class="duo-body"><p class="card-spec big">' + esc(it.spec) + '</p><h3>' + esc(it.name) + '</h3>' +
+        '<p class="duo-perks"><span class="duo-off">' + esc(it.off) + '</span><span class="duo-pt">' + esc(it.point[0]) + '<b>' + esc(it.point[1]) + '</b>' + esc(it.point[2]) + '</span></p>' +
+        '<s class="was">通常 ' + yen(it.was) + '円</s>' +
+        '<p class="price price-l"><span class="num">' + yen(it.price) + '</span><span class="yen">円</span></p>' +
+        '<p class="duo-note">' + esc(it.note) + '</p>' + (it.ship ? '<p class="ship">' + esc(it.ship) + '</p>' : '') +
+        '<a class="btn" href="' + esc(it.url) + '">商品を見る</a></div></article>';
+    }).join('');
+    return '<section class="duo" id="duo" data-zone="black">' +
+      '<header class="duo-head rv"><p class="kicker">' + esc(d.kicker) + '</p><div class="duo-hs">' + heads + '</div></header>' +
+      periodHtml(d.period) +
+      (d.photo ? '<figure class="duo-photo rv"><img src="' + esc(d.photo) + '" alt="" loading="lazy"></figure>' : '') +
+      '<p class="lead duo-lead rv">' + esc(d.lead) + '</p>' +
+      '<div class="duo-cards">' + cards + '</div></section>';
+  };
+
   function footer() {
     return '<footer class="foot"><ul>' + D.notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul>' +
       '<a class="btn btn-gold" href="' + esc(D.shopUrl) + '">' + esc(D.name) + ' トップへ</a></footer>';

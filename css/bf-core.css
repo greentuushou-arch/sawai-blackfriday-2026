@@ -497,3 +497,41 @@ body.lit .fv--neon .sign-main { animation: power .8s steps(1) forwards, buzz 7s 
 .lg-badge { flex: none; display: grid; place-items: center; min-width: 88px; height: 88px; padding: 0 8px; background: var(--c-red); color: #fff; font-size: clamp(24px, 7cqw, 34px); font-weight: 700; line-height: 1.1; text-align: center; }
 .lg-head h3 { font-size: clamp(24px, 7.4cqw, 38px); font-weight: 700; line-height: 1.3; }
 .lg-head p { font-size: 16px; color: var(--c-muted); line-height: 1.5; }
+
+/* ---------- 白と黒 (duo) ---------- */
+.duo { background: linear-gradient(90deg, var(--c-paper) 0 50%, #050403 50% 100%); padding-left: 0; padding-right: 0; }
+.duo > * { margin-left: 4.5cqw; margin-right: 4.5cqw; }
+.duo-head .kicker { display: inline-block; padding: 2px 12px 4px; background: var(--c-red); color: #fff; }
+.duo-hs { display: grid; grid-template-columns: 1fr 1fr; margin-top: 10px; }
+.duo-h { white-space: nowrap; font-size: clamp(28px, 8.6cqw, 52px); font-weight: 700; line-height: 1.2; letter-spacing: .06em; }
+.duo-h--white { color: var(--c-ink); padding-right: 4cqw; text-align: right; }
+.duo-h--black { color: #fff; padding-left: 4cqw; }
+.duo .period { margin: 18px 4.5cqw; background: #050403; text-align: center; }
+.duo-photo { margin: 18px 0 0; }
+.duo-photo img { width: 100%; }
+.duo-lead { margin-top: 0; padding: 14px 4.5cqw 16px; background: #050403; color: #fff; text-align: center; margin-left: 0; margin-right: 0; }
+.duo-cards { display: grid; gap: 14px; margin-top: 16px; }
+.duo-card { display: grid; grid-template-columns: 38% minmax(0, 1fr); align-items: start; background: var(--c-paper); color: var(--c-ink); border: 3px solid var(--c-ink); }
+.duo-card--black { background: #0d0b09; color: #fff; border-color: var(--c-gold); }
+.duo-card--black .card-spec { color: var(--c-gold); }
+.duo-card--black .was { color: #a89a86; }
+.duo-card--black .price { color: #ff3b3b; }
+.duo-card--black .ship { color: #fff; }
+.duo-img { display: block; background: #fff; }
+.duo-img img { width: 100%; aspect-ratio: 1; object-fit: contain; }
+.duo-body { padding: 12px 12px 14px; display: flex; flex-direction: column; }
+.duo-body h3 { font-size: clamp(17px, 4.8cqw, 24px); font-weight: 700; line-height: 1.35; }
+.duo-perks { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 6px; }
+.duo-off { padding: 3px 10px 5px; background: var(--c-red); color: #fff; font-size: 16px; font-weight: 700; }
+.duo-pt { display: inline-flex; align-items: baseline; padding: 0 10px 2px; background: var(--c-gold); background-image: var(--g-gold); color: var(--c-ink); font-size: 16px; font-weight: 700; }
+.duo-pt b { font: 700 26px/1.1 var(--font-num); margin: 0 1px; }
+.duo-body .price-l .num { font-size: clamp(44px, 13.6cqw, 72px); }
+.duo-note { font-size: 14px; font-weight: 700; color: var(--c-red); }
+.duo-card--black .duo-note { color: #ff6b6b; }
+.duo-body .btn { margin-top: 12px; }
+@container (min-width: 680px) {
+  .duo-photo, .duo-lead { max-width: 700px; }
+  .duo-card { grid-template-columns: 44% minmax(0, 1fr); align-items: center; }
+  .duo .price.price-l .num { font-size: 64px; }
+  .duo-cards { max-width: 620px; margin-left: auto; margin-right: auto; }
+}

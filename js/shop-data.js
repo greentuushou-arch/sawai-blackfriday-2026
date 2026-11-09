@@ -23,12 +23,13 @@ window.BF_SHOP = {
   mainLive: false,
 
   /* どの部品をどの順で並べるか。入れ替え・削除が可能 */
-  sections: ['schedule', 'feature', 'coupon', 'bargain', 'category', 'teaser', 'deal'],
+  sections: ['schedule', 'feature', 'duo', 'coupon', 'bargain', 'category', 'teaser', 'deal'],
 
   ticker: ['ブラックフライデー先行セール', '2027年 新春福袋を数量限定で先行販売', '福袋 2,027円から', '1,000円ポッキリ', '50%OFFクーポン', '黒クーポン 96円OFF'],
 
   nav: [
     { id: 'feature', label: 'フライング福袋', short: '福袋', sp: true },
+    { id: 'duo', label: '白と黒の飲みくらべ', short: '白と黒' },
     { id: 'coupon', label: 'オトクなクーポン', short: 'クーポン', sp: true },
     { id: 'bargain', label: '1,000円ポッキリ', short: 'お買い得', sp: true },
     { id: 'category', label: '売り場から探す', short: '売り場', sp: true },
@@ -97,6 +98,27 @@ window.BF_SHOP = {
         name: '初売りセール限定 3万円福袋', spec: '14種 840杯分', img: 'images/f-30000.webp', price: 30000, ship: '送料無料', perCup: '約36円',
         url: 'https://item.rakuten.co.jp/sawaicoffee-tea/ny2025fuku3th/',
         inside: ['14種 各60袋', 'プレミアムゴールド 2袋', '職場でも家族でも分けられる大容量']
+      }
+    ]
+  },
+
+  /* 11/13から販売する2商品(クーポンあり)。本番版でもそのまま出す */
+  duo: {
+    kicker: '11/13(金) 0:00 販売スタート',
+    heads: [{ tone: 'white', text: '白は香り' }, { tone: 'black', text: '黒はコク' }],
+    period: { label: 'クーポンの期間', from: ['11/13', '(金)', '0:00'], to: ['11/25', '(水)', '9:59'] },
+    photo: 'images/shirokuro.jpg',
+    lead: '白と黒、2つのブレンドを飲みくらべ。ブラックフライデーの最後まで、クーポンとポイントアップでどうぞ。',
+    items: [
+      {
+        tone: 'white', spec: 'ドリップバッグ 50袋', name: '白と黒のドリップ ハローブレンド・リッチブレンド', img: 'images/n-dp-richhello50.webp',
+        was: 2980, price: 2520, off: '460円引き', point: ['ポイント', '2', '倍'], note: 'クーポン利用で460円引き',
+        url: 'https://item.rakuten.co.jp/sawaicoffee-tea/dp-richhello50/'
+      },
+      {
+        tone: 'black', spec: '400g×2袋 800g', name: '黒のロイヤルブレンド・白のスペシャルブレンド', img: 'images/n-robspe800.webp',
+        was: 6360, price: 4333, off: '2,027円引き', point: ['ポイント', '15', '倍'], note: 'クーポン利用で2,027円引き', ship: '送料無料',
+        url: 'https://item.rakuten.co.jp/sawaicoffee-tea/robspe800/'
       }
     ]
   },
