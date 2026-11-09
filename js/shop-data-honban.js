@@ -24,7 +24,7 @@
     fv: Object.assign({}, base.fv, {
       signBand: null,
       catch: ['年に一度の', 'お祭り本番'],
-      ship: ['11/19(木) 20:00〜', '11/25(水) 01:59'],
+      ship: ['11/19(木) 20:00〜', '11/25(水) 9:59'],
       boxLabel: 'BLACK FRIDAY福袋',
       cards: ['images/p-saledripbag.webp', 'images/p-483533.webp', 'images/p-dpfvgiga400.webp', 'images/p-coffee10s200.webp'],
       priceLead: 'BLACK FRIDAY福袋',
@@ -34,7 +34,7 @@
 
     countdown: {
       startISO: '2026-11-19T20:00:00+09:00',
-      endISO: '2026-11-25T01:59:59+09:00',
+      endISO: '2026-11-25T09:59:59+09:00',
       before: '本番スタートまで',
       after: 'ブラックフライデー開催中',
       ended: 'ブラックフライデーは終了しました'
