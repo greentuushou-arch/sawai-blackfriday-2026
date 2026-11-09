@@ -317,7 +317,7 @@
       '<header class="duo-head rv"><p class="kicker">' + esc(d.kicker) + '</p><div class="duo-hs">' + heads + '</div></header>' +
       periodHtml(d.period) +
       (d.photo ? '<figure class="duo-photo rv"><img src="' + esc(d.photo) + '" alt="" loading="lazy"></figure>' : '') +
-      '<p class="lead duo-lead rv">' + esc(d.lead) + '</p>' +
+      (d.lead ? '<p class="lead duo-lead rv">' + esc(d.lead) + '</p>' : '') +
       '<div class="duo-cards">' + cards + '</div></section>';
   };
 

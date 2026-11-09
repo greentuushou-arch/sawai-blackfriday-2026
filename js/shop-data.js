@@ -120,7 +120,6 @@ window.BF_SHOP = {
     heads: [{ tone: 'white', text: '白は香り' }, { tone: 'black', text: '黒はコク' }],
     period: { label: 'クーポンの期間', from: ['11/13', '(金)', '0:00'], to: ['11/25', '(水)', '9:59'] },
     photo: 'images/shirokuro.jpg',
-    lead: '白と黒、2つのブレンドを飲みくらべ。ブラックフライデーの最後まで、クーポンとポイントアップでどうぞ。',
     items: [
       {
         tone: 'white', spec: 'ドリップバッグ 50袋', name: '白と黒のドリップ ハローブレンド・リッチブレンド', img: 'images/n-dp-richhello50.webp',
