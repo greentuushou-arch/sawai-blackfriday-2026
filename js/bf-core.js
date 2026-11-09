@@ -272,6 +272,20 @@
     return '<section class="lineup z-black" id="lineup" data-zone="black">' + secHead(L.kicker, L.title, L.lead) + groups + '</section>';
   };
 
+  /* 目玉アイテム: FV直下の控えめな横並び。下の福袋へつなぐ一言つき */
+  PARTS.picks = function () {
+    var p = D.picks;
+    var cards = p.items.map(function (it) {
+      return '<a class="pick rv" href="' + esc(it.url) + '"><span class="pick-img"><img src="' + esc(it.img) + '" alt="' + esc(it.name) + '" loading="lazy"></span>' +
+        '<span class="pick-body"><span class="pick-name">' + esc(it.name) + '</span>' +
+        '<span class="pick-price"><b>' + yen(it.price) + '</b>円' + (it.from ? '〜' : '') + '</span></span></a>';
+    }).join('');
+    return '<section class="picks z-black" id="picks" data-zone="black"><h2 class="picks-head rv">' + esc(p.title) + '</h2>' +
+      '<div class="picks-row">' + cards + '</div>' +
+      (p.next ? '<a class="picks-next rv" href="' + esc(p.next.href) + '"><span>' + esc(p.next.lead) + '</span><b>' + esc(p.next.text) + '</b><i aria-hidden="true"></i></a>' : '') +
+      '</section>';
+  };
+
   /* クーポン獲得ボタン。url が # の間はリンクなしで見た目だけ出す */
   function couponBtn(c) {
     if (!c) return '';

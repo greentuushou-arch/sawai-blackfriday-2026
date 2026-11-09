@@ -23,7 +23,7 @@ window.BF_SHOP = {
   mainLive: false,
 
   /* どの部品をどの順で並べるか。入れ替え・削除が可能 */
-  sections: ['schedule', 'feature', 'duo', 'coupon', 'bargain', 'category', 'teaser', 'deal'],
+  sections: ['picks', 'feature', 'schedule', 'duo', 'coupon', 'bargain', 'category', 'teaser', 'deal'],
 
   ticker: ['ブラックフライデー先行セール', '2027年 新春福袋を数量限定で先行販売', '福袋 2,027円から', '1,000円ポッキリ', '50%OFFクーポン', '黒クーポン 96円OFF'],
 
@@ -100,6 +100,18 @@ window.BF_SHOP = {
         inside: ['14種 各60袋', 'プレミアムゴールド 2袋', '職場でも家族でも分けられる大容量']
       }
     ]
+  },
+
+  /* FV直下の目玉アイテム(広告入稿する商品)。価格は商品ページの通常表示に合わせる */
+  picks: {
+    title: '目玉アイテム',
+    items: [
+      { name: '本日の108円コーヒー', img: 'images/o/100g100en.webp', price: 108, url: 'https://item.rakuten.co.jp/sawaicoffee-tea/100g100en/' },
+      { name: 'ビタークラシック ドリップ10杯分', img: 'images/o/dpbitterclassic10.webp', price: 301, url: 'https://item.rakuten.co.jp/sawaicoffee-tea/dp-bitterclassic10/' },
+      { name: '金と銀のビターブレンド', img: 'images/o/goldsilverbitter.webp', price: 11198, url: 'https://item.rakuten.co.jp/sawaicoffee-tea/goldsilverbitter/' },
+      { name: 'コーヒーおせち福袋 ドリップ200杯分', img: 'images/o/osechi200set1803ss.webp', price: 7990, url: 'https://item.rakuten.co.jp/sawaicoffee-tea/osechi-200set-1803ss/' }
+    ],
+    next: { lead: 'そして今回の主役は', text: '2027年福袋の先行販売', href: '#feature' }
   },
 
   /* 11/13から販売する2商品(クーポンあり)。本番版でもそのまま出す */
