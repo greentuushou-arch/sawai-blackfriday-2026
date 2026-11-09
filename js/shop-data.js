@@ -130,6 +130,11 @@ window.BF_SHOP = {
         tone: 'black', spec: '400g×2袋 800g', name: '黒のロイヤルブレンド・白のスペシャルブレンド', img: 'images/n-robspe800.webp',
         was: 6360, price: 4333, off: '2,027円引き', point: ['ポイント', '15', '倍'], note: 'クーポン利用で2,027円引き', coupon: { amount: '2,027', url: '#' }, ship: '送料無料',
         url: 'https://item.rakuten.co.jp/sawaicoffee-tea/robspe800/'
+      },
+      {
+        tone: 'white', spec: '400g×2袋 80杯分', name: '白と黒のカフェインレスコーヒー', img: 'images/n-noncafebw100.webp',
+        was: 5728, price: 4768, off: '960円OFF', point: ['ポイント', '2', '倍'], note: 'クーポン利用で960円OFF', coupon: { amount: '960', url: '#' },
+        url: 'https://item.rakuten.co.jp/sawaicoffee-tea/noncafebw100/'
       }
     ]
   },

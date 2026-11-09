@@ -566,3 +566,27 @@ body.lit .fv--neon .sign-main { animation: power .8s steps(1) forwards, buzz 7s 
   .pick { grid-template-columns: 1fr; align-items: start; }
   .pick-name { font-size: 15px; }
 }
+
+/* 白と黒のカード: 上段=写真+商品名、下段=価格とボタン (11/9 バランス調整) */
+.duo-card { grid-template-columns: 36% minmax(0, 1fr); align-items: center; column-gap: 12px; padding: 10px; }
+.duo-img { align-self: start; }
+.duo-top { min-width: 0; }
+.duo-top h3 { font-size: clamp(16px, 4.6cqw, 22px); font-weight: 700; line-height: 1.35; }
+.duo-top .card-spec.big { font-size: 15px; }
+.duo-top .duo-perks { margin: 8px 0 0; }
+.duo-bottom { grid-column: 1 / -1; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(128, 112, 90, .35); }
+.duo-price { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0 10px; }
+.duo-price .was { order: 0; }
+.duo-bottom .price-l .num { font-size: clamp(46px, 14cqw, 72px); }
+.duo-note { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 10px; margin-top: 2px; }
+.duo-note span { color: inherit; }
+.duo-card--white .duo-note span { color: var(--c-ink); }
+.duo-card--black .duo-note span { color: #fff; }
+.duo-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; align-items: stretch; }
+.duo-btns .btn-coupon, .duo-btns .btn { margin-top: 0; }
+.duo-btns .btn { display: grid; place-items: center; padding: 10px 6px; font-size: 16px; }
+.duo-btns .btn-coupon { padding: 8px 6px 10px; font-size: 15px; }
+.duo-btns .btn-coupon b { font-size: clamp(22px, 6.4cqw, 32px); }
+@container (min-width: 680px) {
+  .duo-card { grid-template-columns: 34% minmax(0, 1fr); }
+}

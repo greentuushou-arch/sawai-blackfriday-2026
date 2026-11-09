@@ -303,15 +303,15 @@
       return '<p class="duo-h duo-h--' + esc(h.tone) + '">' + esc(h.text) + '</p>';
     }).join('');
     var cards = d.items.map(function (it) {
+      /* 上段: 写真の横に商品名と札。下段: 価格とボタンを横幅いっぱいに */
       return '<article class="duo-card duo-card--' + esc(it.tone) + ' rv">' +
         '<a class="duo-img" href="' + esc(it.url) + '"><img src="' + esc(it.img) + '" alt="' + esc(it.name) + '" loading="lazy"></a>' +
-        '<div class="duo-body"><p class="card-spec big">' + esc(it.spec) + '</p><h3>' + esc(it.name) + '</h3>' +
-        '<p class="duo-perks"><span class="duo-off">' + esc(it.off) + '</span><span class="duo-pt">' + esc(it.point[0]) + '<b>' + esc(it.point[1]) + '</b>' + esc(it.point[2]) + '</span></p>' +
-        '<s class="was">通常 ' + yen(it.was) + '円</s>' +
-        '<p class="price price-l"><span class="num">' + yen(it.price) + '</span><span class="yen">円</span></p>' +
-        '<p class="duo-note">' + esc(it.note) + '</p>' + (it.ship ? '<p class="ship">' + esc(it.ship) + '</p>' : '') +
-        couponBtn(it.coupon) +
-        '<a class="btn" href="' + esc(it.url) + '">商品を見る</a></div></article>';
+        '<div class="duo-top"><p class="card-spec big">' + esc(it.spec) + '</p><h3>' + esc(it.name) + '</h3>' +
+        '<p class="duo-perks"><span class="duo-off">' + esc(it.off) + '</span><span class="duo-pt">' + esc(it.point[0]) + '<b>' + esc(it.point[1]) + '</b>' + esc(it.point[2]) + '</span></p></div>' +
+        '<div class="duo-bottom"><div class="duo-price"><s class="was">通常 ' + yen(it.was) + '円</s>' +
+        '<p class="price price-l"><span class="num">' + yen(it.price) + '</span><span class="yen">円</span></p></div>' +
+        '<p class="duo-note">' + esc(it.note) + (it.ship ? '<span>' + esc(it.ship) + '</span>' : '') + '</p>' +
+        '<div class="duo-btns">' + couponBtn(it.coupon) + '<a class="btn" href="' + esc(it.url) + '">商品を見る</a></div></div></article>';
     }).join('');
     return '<section class="duo" id="duo" data-zone="black">' +
       '<header class="duo-head rv"><p class="kicker">' + esc(d.kicker) + '</p><div class="duo-hs">' + heads + '</div></header>' +
