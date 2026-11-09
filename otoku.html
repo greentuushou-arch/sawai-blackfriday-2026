@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>澤井珈琲 BLACK FRIDAY お得福袋</title>
+<meta name="robots" content="noindex"><!-- 確認用。納品時に削除 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho+B1:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/bf-core.css">
+<link rel="stylesheet" href="css/theme-sawai.css">
+</head>
+<body data-zone="black">
+
+<!-- 両脇の舞台。PC幅でだけ見える -->
+<div class="stage" aria-hidden="true"><i class="spot spot-l"></i><i class="spot spot-r"></i></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<aside class="rail rail-l" id="railL"></aside>
+<aside class="rail rail-r" id="railR"></aside>
+
+<main class="col" id="app"></main>
+
+<nav class="tabbar" id="tabbar" aria-label="ページ内メニュー"></nav>
+
+<script src="js/shop-data.js"></script>
+<script src="js/shop-data-otoku.js"></script><!-- お得福袋版のデータで上書き -->
+<script src="js/bf-core.js"></script>
+</body>
+</html>

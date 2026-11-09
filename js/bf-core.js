@@ -43,9 +43,11 @@
 
   function miniCard(item) {
     return '<a class="card rv" href="' + esc(item.url) + '">' +
-      '<span class="card-img"><img src="' + esc(item.img) + '" alt="' + esc(item.name) + '" loading="lazy"></span>' +
+      '<span class="card-img"><img src="' + esc(item.img) + '" alt="' + esc(item.name) + '" loading="lazy">' +
+      (item.badge ? '<span class="card-badge">' + esc(item.badge) + '</span>' : '') + '</span>' +
       '<span class="card-body"><span class="card-name">' + esc(item.name) + '</span>' +
-      '<span class="card-spec">' + esc(item.spec) + '</span>' + priceHtml(item) +
+      (item.spec ? '<span class="card-spec">' + esc(item.spec) + '</span>' : '') + priceHtml(item) +
+      (item.note ? '<span class="card-note">' + esc(item.note) + '</span>' : '') +
       (item.ship ? '<span class="ship">' + esc(item.ship) + '</span>' : '') + '</span></a>';
   }
 
@@ -179,6 +181,7 @@
 
   PARTS.coupon = function () {
     var c = D.coupon;
+    if (c.layout === 'ladder') return couponLadder(c);
     var tiers = c.tiers.map(function (t, i) {
       var ready = t.url && t.url !== '#';
       var unit = t.unit || ['円', 'OFF'];
@@ -228,6 +231,45 @@
     return '<section class="teaser z-black" id="teaser" data-zone="black"><p class="kicker rv">' + esc(t.kicker) + '</p>' + period +
       '<p class="teaser-num rv"><span>' + esc(t.numberLead) + '</span><b>' + esc(t.numberText) + '</b><span>' + esc(t.unit) + 'の</span></p><h2 class="rv">' + esc(t.title) + '</h2>' +
       '<div class="bags" data-bags>' + bags + '</div><p class="lead rv">' + esc(t.body) + '</p></section>';
+  };
+
+  /* 段階クーポン: 下へ行くほど幅と数字が大きくなる階段 */
+  function couponLadder(c) {
+    var n = c.tiers.length;
+    var ready = c.url && c.url !== '#';
+    var rows = c.tiers.map(function (t, i) {
+      return '<li class="rv" style="--i:' + i + ';--n:' + n + '"><span class="ld-min">' + esc(t.min) + '</span>' +
+        '<span class="ld-off"><b>' + esc(t.off) + '</b><span>円OFF</span></span></li>';
+    }).join('');
+    return '<section class="coupon z-gold" id="coupon" data-zone="gold">' + secHead(c.kicker, c.title, c.lead) +
+      '<ol class="ladder">' + rows + '</ol>' +
+      '<a class="btn' + (ready ? '' : ' is-wait') + ' rv" href="' + esc(c.url || '#') + '">' + esc(ready ? c.cta : '準備中') + '</a>' +
+      (c.items ? '<h3 class="sub-head rv">' + esc(c.itemsHead) + '</h3><div class="grid">' + c.items.map(miniCard).join('') + '</div>' : '') + '</section>';
+  }
+
+  /* おまけ: 金額に応じたプレゼント + キーワード */
+  PARTS.omake = function () {
+    var o = D.omake;
+    var gifts = o.tiers.map(function (t) {
+      return '<div class="gift rv"><p class="gift-min"><b>' + esc(t.min) + '</b><span>お買い上げで</span></p>' +
+        '<p class="gift-what"><span>' + esc(t.item) + '</span><b>' + esc(t.qty) + '</b><span>' + esc(t.unit) + '</span></p>' +
+        '<p class="gift-tag">プレゼント</p></div>';
+    }).join('');
+    var kw = o.keyword ? '<div class="keyword rv"><p class="kw-lead">' + esc(o.keyword.lead) + '</p><p class="kw-word">' + esc(o.keyword.word) + '</p><p class="kw-body">' + esc(o.keyword.body) + '</p></div>' : '';
+    return '<section class="omake z-black" id="omake" data-zone="black" data-burst>' + secHead(o.kicker, o.title) +
+      periodHtml(o.period) + '<div class="gifts">' + gifts + '</div>' +
+      (o.note ? '<p class="omake-note rv">' + esc(o.note) + '</p>' : '') + kw + '</section>';
+  };
+
+  /* 商品一覧: グループごとに大きな札(半額など)と見出し */
+  PARTS.lineup = function () {
+    var L = D.lineup;
+    var groups = L.groups.map(function (g) {
+      return '<div class="lineup-group" id="' + esc(g.id) + '"><header class="lg-head rv"><span class="lg-badge">' + esc(g.badge) + '</span>' +
+        '<div><h3>' + esc(g.title) + '</h3>' + (g.lead ? '<p>' + esc(g.lead) + '</p>' : '') + '</div></header>' +
+        '<div class="grid">' + g.items.map(miniCard).join('') + '</div></div>';
+    }).join('');
+    return '<section class="lineup z-black" id="lineup" data-zone="black">' + secHead(L.kicker, L.title, L.lead) + groups + '</section>';
   };
 
   function footer() {

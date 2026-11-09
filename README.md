@@ -64,3 +64,9 @@
 `js/shop-data.js` を読んだあと `js/shop-data-honban.js` で上書きし、`css/theme-sawai-neon.css` で金をネオン管の赤とシアンに変える。
 FVは `fv.style: 'neon'` で電球の看板がネオン管の看板になる。新春福袋とスケジュールは外している。
 カウントダウンは本番開始まで、終了後は `countdown.ended` の文言に切り替わる。
+
+## お得福袋版(otoku.html)
+
+おまけ(11/18〜11/25)、7段階クーポン、お得福袋25商品のページ。`js/shop-data-otoku.js` で上書きする。
+新しい部品: `omake`(金額でプレゼント+キーワード)、`coupon` の `layout: 'ladder'`(段階クーポンの階段)、`lineup`(半額などの札つき商品グループ)。
+商品カードは `badge`(左上の札)、`was`(通常価格の取り消し線)、`note`(赤い注記)に対応。
