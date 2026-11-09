@@ -272,6 +272,16 @@
     return '<section class="lineup z-black" id="lineup" data-zone="black">' + secHead(L.kicker, L.title, L.lead) + groups + '</section>';
   };
 
+  /* クーポン獲得ボタン。url が # の間はリンクなしで見た目だけ出す */
+  function couponBtn(c) {
+    if (!c) return '';
+    var ready = c.url && c.url !== '#';
+    var inner = '<b>' + esc(c.amount) + '</b>円クーポン<span>獲得する</span>';
+    return ready
+      ? '<a class="btn-coupon" href="' + esc(c.url) + '">' + inner + '</a>'
+      : '<span class="btn-coupon" aria-disabled="true">' + inner + '</span>';
+  }
+
   /* 白と黒: 左右で白地と黒地に分けた2商品の紹介 */
   PARTS.duo = function () {
     var d = D.duo;
@@ -286,6 +296,7 @@
         '<s class="was">通常 ' + yen(it.was) + '円</s>' +
         '<p class="price price-l"><span class="num">' + yen(it.price) + '</span><span class="yen">円</span></p>' +
         '<p class="duo-note">' + esc(it.note) + '</p>' + (it.ship ? '<p class="ship">' + esc(it.ship) + '</p>' : '') +
+        couponBtn(it.coupon) +
         '<a class="btn" href="' + esc(it.url) + '">商品を見る</a></div></article>';
     }).join('');
     return '<section class="duo" id="duo" data-zone="black">' +

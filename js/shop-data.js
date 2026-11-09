@@ -112,12 +112,12 @@ window.BF_SHOP = {
     items: [
       {
         tone: 'white', spec: 'ドリップバッグ 50袋', name: '白と黒のドリップ ハローブレンド・リッチブレンド', img: 'images/n-dp-richhello50.webp',
-        was: 2980, price: 2520, off: '460円引き', point: ['ポイント', '2', '倍'], note: 'クーポン利用で460円引き',
+        was: 2980, price: 2520, off: '460円引き', point: ['ポイント', '2', '倍'], note: 'クーポン利用で460円引き', coupon: { amount: '460', url: '#' },
         url: 'https://item.rakuten.co.jp/sawaicoffee-tea/dp-richhello50/'
       },
       {
         tone: 'black', spec: '400g×2袋 800g', name: '黒のロイヤルブレンド・白のスペシャルブレンド', img: 'images/n-robspe800.webp',
-        was: 6360, price: 4333, off: '2,027円引き', point: ['ポイント', '15', '倍'], note: 'クーポン利用で2,027円引き', ship: '送料無料',
+        was: 6360, price: 4333, off: '2,027円引き', point: ['ポイント', '15', '倍'], note: 'クーポン利用で2,027円引き', coupon: { amount: '2,027', url: '#' }, ship: '送料無料',
         url: 'https://item.rakuten.co.jp/sawaicoffee-tea/robspe800/'
       }
     ]
